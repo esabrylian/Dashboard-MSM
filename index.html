@@ -207,7 +207,7 @@ document.addEventListener('click',e=>{
   if(t.dataset.arm){sb.from(T[D.k]).delete().eq('id',D.id).then(({error})=>error?fail(error):load());return}
   t.dataset.arm=1;t.textContent='Yakin hapus?';setTimeout(()=>{delete t.dataset.arm;t.textContent='Hapus'},3000);}
 });
-const SUPABASE_URL='https://supabase.com/dashboard/project/bqstywjflynxxlpkmeqv',SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJxc3R5d2pmbHlueHhscGttZXF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1ODI4NzIsImV4cCI6MjEwODE1ODg3Mn0.gdCArnuyvVY9EPAb6t7KMSAbwdTQxhZRuYe53MfnVP0';
+const SUPABASE_URL='https://bqstywjflynxxlpkmeqv.supabase.co',SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJxc3R5d2pmbHlueHhscGttZXF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1ODI4NzIsImV4cCI6MjEwODE1ODg3Mn0.gdCArnuyvVY9EPAb6t7KMSAbwdTQxhZRuYe53MfnVP0';
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 async function load(){for(const k of ['p','i','s']){const {data,error}=await sb.from(T[k]).select('*').order('created_at');
  if(error)return fail(error);S[k]=data.map(r=>{for(const f of ['qty','nilai','modal','share'])if(f in r)r[f]=+r[f];return r})}render();}
