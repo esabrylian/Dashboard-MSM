@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dashboard Pengadaan - PT. Mulya Sarana Mandiri</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f4;--card:#fff;--ink:#14213d;--mut:#5d6b82;--line:#d9dfe7;--acc:#0f766e;--acc2:#c98a1b;--bad:#b4363b;--side:#14213d;--sideink:#e8edf5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0e1522;--card:#17202f;--ink:#e8edf5;--mut:#98a5ba;--line:#2a3548;--acc:#2dd4bf;--acc2:#e3a840;--bad:#f0777b;--side:#0a101b}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0e1522;--card:#17202f;--ink:#e8edf5;--mut:#98a5ba;--line:#2a3548;--acc:#2dd4bf;--acc2:#e3a840;--bad:#f0777b;--side:#0a101b}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+aside{background:var(--side);color:var(--sideink);padding:24px 16px;position:sticky;top:0;height:100vh}
+.brand{font-weight:800;font-size:16px;line-height:1.25;margin:0 8px 28px}
+.brand small{display:block;font-weight:500;opacity:.65;font-size:12px;margin-top:4px}
+nav{display:flex;flex-direction:column;gap:4px}
+nav button{all:unset;cursor:pointer;padding:10px 12px;border-radius:8px;font-weight:500;color:var(--sideink)}
+nav button:hover{background:rgba(255,255,255,.08)}
+nav button.on{background:var(--acc);color:#fff;font-weight:700}
+nav button:focus-visible,.btn:focus-visible{outline:2px solid var(--acc2);outline-offset:2px}
+main{padding:28px;max-width:1100px;width:100%}
+h1{font-size:24px;margin:0 0 4px;font-weight:800}
+h2{font-size:17px;margin:28px 0 10px;font-weight:700}
+.sub{color:var(--mut);margin:0 0 20px}
+.sec{display:none}.sec.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+.big{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:4px 0 12px}
+.lbl{color:var(--mut);font-size:13px}
+.bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--line)}
+.bar i{display:block;height:100%}
+.leg{display:flex;gap:16px;margin-top:8px;font-size:13px;color:var(--mut);flex-wrap:wrap}
+.leg b{color:var(--ink)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.kpis .n{font-size:20px;font-weight:800}
+.ai{border-left:4px solid var(--acc2)}
+.ai ul{margin:8px 0 0;padding-left:20px}.ai li{margin-bottom:8px}
+.tw{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:13px;color:var(--mut);font-weight:500}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right}
+.pos{color:var(--acc);font-weight:700}.neg{color:var(--bad);font-weight:700}
+.empty{padding:22px;color:var(--mut);text-align:center}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.btn{cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:8px;font:inherit;font-weight:500}
+.btn.p{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:700}
+.btn.s{padding:4px 10px;font-size:13px;margin-left:4px}
+.btn.d{color:var(--bad)}
+.tabs{display:flex;gap:6px;margin-bottom:6px}
+.tabs button{cursor:pointer;border:0;background:none;font:inherit;font-weight:700;color:var(--mut);padding:8px 14px;border-bottom:3px solid transparent}
+.tabs button.on{color:var(--ink);border-color:var(--acc)}
+.tag{font-size:12px;padding:2px 8px;border-radius:99px;background:var(--line)}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);padding:22px;width:min(440px,92vw)}
+dialog::backdrop{background:rgba(10,16,27,.55)}
+label{display:block;font-size:13px;color:var(--mut);margin:12px 0 4px}
+input,select{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+.pv{margin-top:14px;padding:12px;border-radius:8px;background:var(--bg);font-size:14px}
+.pv div{display:flex;justify-content:space-between}
+.act{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+#login{position:fixed;inset:0;z-index:50;background:var(--side);color:var(--sideink);display:flex;align-items:center;justify-content:center;padding:20px;overflow:auto}
+.lbox{width:min(400px,100%);text-align:center}
+.lbox svg{width:96px;height:96px}
+.lbox h1{font-size:28px;margin:16px 0 4px}
+.lbox p{margin:0 0 24px;opacity:.7}
+.lbox form{background:var(--card);color:var(--ink);border-radius:14px;padding:22px;text-align:left}
+.lbox form label:first-child{margin-top:0}
+.lbox .btn{width:100%;margin-top:18px;padding:11px}
+.rem{display:flex!important;align-items:center;gap:8px;margin-top:14px}.rem input{width:auto}
+#err{color:var(--bad);min-height:20px;font-size:13px;margin-top:10px}
+.who{margin-top:24px;padding:12px 8px 0;border-top:1px solid rgba(255,255,255,.15);font-size:12px;word-break:break-all}
+.who .btn{margin-top:8px;width:100%;background:transparent;color:var(--sideink);border-color:rgba(255,255,255,.3)}
+@media (max-width:820px){.who{display:flex;align-items:center;gap:10px;margin-top:8px;padding:8px 0 0}.who .btn{margin:0;width:auto;padding:4px 12px}
+body{grid-template-columns:1fr}
+aside{position:sticky;top:0;height:auto;padding:12px;z-index:5;padding-top:calc(12px + env(safe-area-inset-top,0px))}
+.brand{margin-bottom:10px}
+nav{flex-direction:row;overflow-x:auto}nav button{white-space:nowrap}
+main{padding:18px}.hero,.kpis{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="login"><div class="lbox">
+<svg viewBox="0 0 96 96" role="img" aria-label="Logo PT. Mulya Sarana Mandiri"><rect width="96" height="96" rx="22" fill="#0f766e"/><path d="M48 18 74 32v28L48 74 22 60V32z" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/><path d="M22 32l26 14 26-14M48 46v28" fill="none" stroke="#c98a1b" stroke-width="4" stroke-linejoin="round"/></svg>
+<h1>Selamat Datang</h1><p>PT. MULYA SARANA MANDIRI<br>Dashboard Pengadaan</p>
+<form id="lf"><label for="em">Email</label><input id="em" type="email" autocomplete="username" required>
+<label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" required>
+<div id="err" role="alert"></div><button class="btn p">Masuk</button></form></div></div>
+<aside>
+<p class="brand">PT. MULYA SARANA MANDIRI<small>Dashboard Pengadaan</small></p>
+<nav id="nav"></nav>
+<div class="who"><span id="who"></span><button class="btn" id="out">Keluar</button></div>
+</aside>
+<main>
+<section class="sec" id="v-dash"></section>
+<section class="sec" id="v-pgd"></section>
+<section class="sec" id="v-inv"></section>
+<section class="sec" id="v-sup"></section>
+</main>
+<dialog id="dlg"><form id="f"></form></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+const rp=n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n||0);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+let S={p:[],i:[],s:[]};const T={p:'projects',i:'investors',s:'suppliers'};
+const fail=e=>alert('Gagal: '+e.message);
+const calc=p=>{const pajak=p.nilai*.205;return{pajak,profit:p.nilai-pajak-p.modal}};
+const sum=(a,f)=>a.reduce((t,x)=>t+f(x),0);
+let view='dash',tab='Pemerintah';
+const VIEWS=[['dash','Dashboard'],['pgd','Pengadaan'],['inv','Investor'],['sup','Kontak Supplier']];
+
+function saran(){
+ const all=S.p,on=all.filter(x=>x.status!=='Selesai'),done=all.filter(x=>x.status==='Selesai'),o=[];
+ if(!all.length)return['Mulai dengan menambahkan project pertama di menu Pengadaan agar saran bisa dihitung.'];
+ const tot=sum(all,x=>x.nilai),gp=sum(all.filter(x=>x.tipe==='Pemerintah'),x=>x.nilai)/tot;
+ if(gp>.7)o.push(`${Math.round(gp*100)}% nilai project berasal dari pemerintah. Perluas pasar B2B agar arus kas tidak bergantung pada siklus pembayaran pemerintah.`);
+ else if(gp<.3)o.push(`Project didominasi B2B (${Math.round((1-gp)*100)}%). Ikuti lebih banyak tender pemerintah untuk menaikkan nilai kontrak.`);
+ else o.push('Komposisi pengadaan pemerintah dan B2B sudah seimbang. Pertahankan untuk menjaga risiko tetap tersebar.');
+ const m=sum(all,x=>calc(x).profit)/tot,mp=(m*100).toFixed(1).replace('.',',')+'%';
+ if(m<.1)o.push(`Margin bersih rata-rata hanya ${mp} setelah pajak 20,5% dan modal. Negosiasikan harga modal dengan 2-3 supplier atau naikkan harga penawaran.`);
+ else o.push(`Margin bersih rata-rata ${mp} tergolong sehat. Prioritaskan jenis barang dengan margin tertinggi pada penawaran berikutnya.`);
+ const rugi=all.filter(x=>calc(x).profit<0);
+ if(rugi.length)o.push(`${rugi.length} project berprofit negatif (${esc(rugi.map(x=>x.nama).join(', '))}). Tinjau ulang harga atau modalnya segera.`);
+ if(!on.length)o.push('Tidak ada project berjalan. Cari tender atau penawaran B2B baru supaya omzet tidak berhenti.');
+ else{const von=sum(on,x=>x.nilai),big=on.reduce((a,b)=>a.nilai>b.nilai?a:b);
+  if(on.length>1&&big.nilai/von>.6)o.push(`Project ${esc(big.nama)} menyumbang ${Math.round(big.nilai/von*100)}% nilai yang sedang berjalan. Kegagalan di satu project berdampak besar, tambahkan project lain.`);
+  const need=sum(on,x=>x.modal),dana=sum(S.i,x=>x.modal);
+  if(need>dana&&S.i.length)o.push(`Kebutuhan modal project berjalan (${rp(need)}) melebihi total dana investor (${rp(dana)}). Siapkan tambahan investor atau pembiayaan.`);}
+ if(sum(S.i,x=>x.share)>100)o.push('Total persentase bagi hasil investor melebihi 100%. Periksa kembali menu Investor.');
+ if(S.s.length<3)o.push('Supplier terdaftar masih sedikit. Tambahkan supplier alternatif agar harga modal bisa dibandingkan.');
+ return o;}
+
+function rDash(){
+ const on=S.p.filter(x=>x.status!=='Selesai'),done=S.p.filter(x=>x.status==='Selesai');
+ const von=sum(on,x=>x.nilai),g=sum(on.filter(x=>x.tipe==='Pemerintah'),x=>x.nilai),b=von-g;
+ const gw=von?g/von*100:0,pr=sum(done,x=>calc(x).profit);
+ $('#v-dash').innerHTML=`<h1>Dashboard</h1><p class="sub">Ringkasan pengadaan yang sedang berjalan</p>
+ <div class="hero"><div class="card"><div class="lbl">Nilai project sedang berjalan</div><div class="big">${rp(von)}</div>
+ <div class="bar"><i style="width:${gw}%;background:var(--acc)"></i><i style="width:${von?100-gw:0}%;background:var(--acc2)"></i></div>
+ <div class="leg"><span><span class="dot" style="background:var(--acc)"></span>Pemerintah <b>${rp(g)}</b></span><span><span class="dot" style="background:var(--acc2)"></span>B2B <b>${rp(b)}</b></span></div></div>
+ <div class="card ai"><b>Saran AI untuk kemajuan PT</b><ul>${saran().map(s=>`<li>${s}</li>`).join('')}</ul></div></div>
+ <div class="kpis"><div class="card"><div class="lbl">Project berjalan</div><div class="n">${on.length}</div></div>
+ <div class="card"><div class="lbl">Project selesai</div><div class="n">${done.length}</div></div>
+ <div class="card"><div class="lbl">Profit bersih (selesai)</div><div class="n ${pr<0?'neg':'pos'}">${rp(pr)}</div></div></div>
+ <h2>Pengadaan sedang berjalan</h2>${tbl(on,false)}`;}
+
+function tbl(list,act){
+ if(!list.length)return`<div class="tw"><div class="empty">Belum ada project di sini.</div></div>`;
+ return`<div class="tw"><table><tr><th>Nama barang</th><th>Tipe</th><th class="r">Qty</th><th class="r">Nilai project</th><th class="r">Modal</th><th class="r">Pajak 20,5%</th><th class="r">Profit bersih</th>${act?'<th></th>':''}</tr>
+ ${list.map(p=>{const c=calc(p);return`<tr><td>${esc(p.nama)}</td><td><span class="tag">${p.tipe}</span></td><td class="r">${p.qty}</td><td class="r">${rp(p.nilai)}</td><td class="r">${rp(p.modal)}</td><td class="r">${rp(c.pajak)}</td><td class="r ${c.profit<0?'neg':'pos'}">${rp(c.profit)}</td>
+ ${act?`<td class="r"><button class="btn s" data-a="tgl" data-id="${p.id}">${p.status==='Selesai'?'Buka lagi':'Tandai selesai'}</button><button class="btn s" data-a="edit" data-k="p" data-id="${p.id}">Edit</button><button class="btn s d" data-a="del" data-k="p" data-id="${p.id}">Hapus</button></td>`:''}</tr>`}).join('')}</table></div>`;}
+
+function rPgd(){
+ const l=S.p.filter(x=>x.tipe===tab);
+ $('#v-pgd').innerHTML=`<div class="top"><div><h1>Pengadaan</h1><p class="sub" style="margin:0">Kelola project pemerintah dan B2B</p></div><button class="btn p" data-a="add" data-k="p">+ Tambah pengadaan</button></div>
+ <div class="tabs"><button data-tab="Pemerintah" class="${tab==='Pemerintah'?'on':''}">Pengadaan Pemerintah</button><button data-tab="B2B" class="${tab==='B2B'?'on':''}">Pengadaan B2B</button></div>
+ <h2>Project on going</h2>${tbl(l.filter(x=>x.status!=='Selesai'),true)}
+ <h2>Project selesai</h2>${tbl(l.filter(x=>x.status==='Selesai'),true)}`;}
+
+function rInv(){
+ const pr=sum(S.p.filter(x=>x.status==='Selesai'),x=>calc(x).profit);
+ $('#v-inv').innerHTML=`<div class="top"><div><h1>Investor</h1><p class="sub" style="margin:0">Keuntungan dihitung dari persentase bagi hasil x total profit bersih project selesai (${rp(pr)})</p></div><button class="btn p" data-a="add" data-k="i">+ Tambah investor</button></div>
+ ${S.i.length?`<div class="tw"><table><tr><th>Nama investor</th><th class="r">Modal disetor</th><th class="r">Bagi hasil</th><th class="r">Keuntungan</th><th></th></tr>
+ ${S.i.map(i=>`<tr><td>${esc(i.nama)}</td><td class="r">${rp(i.modal)}</td><td class="r">${i.share}%</td><td class="r pos">${rp(pr*i.share/100)}</td><td class="r"><button class="btn s" data-a="edit" data-k="i" data-id="${i.id}">Edit</button><button class="btn s d" data-a="del" data-k="i" data-id="${i.id}">Hapus</button></td></tr>`).join('')}</table></div>`:'<div class="tw"><div class="empty">Belum ada investor.</div></div>'}`;}
+
+function rSup(){
+ $('#v-sup').innerHTML=`<div class="top"><div><h1>Kontak Supplier</h1><p class="sub" style="margin:0">Daftar supplier untuk pemesanan barang</p></div><button class="btn p" data-a="add" data-k="s">+ Tambah supplier</button></div>
+ ${S.s.length?`<div class="tw"><table><tr><th>Nama supplier</th><th>Bidang</th><th>Kontak</th><th></th></tr>
+ ${S.s.map(s=>`<tr><td>${esc(s.nama)}</td><td>${esc(s.bidang)}</td><td>${esc(s.kontak)}</td><td class="r"><button class="btn s" data-a="edit" data-k="s" data-id="${s.id}">Edit</button><button class="btn s d" data-a="del" data-k="s" data-id="${s.id}">Hapus</button></td></tr>`).join('')}</table></div>`:'<div class="tw"><div class="empty">Belum ada supplier.</div></div>'}`;}
+
+function render(){
+ $('#nav').innerHTML=VIEWS.map(([k,t])=>`<button data-v="${k}" class="${k===view?'on':''}">${t}</button>`).join('');
+ document.querySelectorAll('.sec').forEach(s=>s.classList.toggle('on',s.id==='v-'+view));
+ ({dash:rDash,pgd:rPgd,inv:rInv,sup:rSup})[view]();}
+
+const FORMS={
+ p:{t:'pengadaan',f:[['tipe','Tipe pengadaan','select',['Pemerintah','B2B']],['nama','Nama barang','text'],['qty','Quantity','number'],['nilai','Nilai project / harga jual (Rp)','number'],['modal','Modal (Rp)','number'],['status','Status','select',['On Going','Selesai']]]},
+ i:{t:'investor',f:[['nama','Nama investor','text'],['modal','Modal disetor (Rp)','number'],['share','Bagi hasil (%)','number']]},
+ s:{t:'supplier',f:[['nama','Nama supplier','text'],['bidang','Bidang supplier','text'],['kontak','Kontak supplier (telepon/email)','text']]}};
+let cur=null;
+function openForm(k,id){
+ const F=FORMS[k],d=id?S[k].find(x=>x.id===id):(k==='p'?{tipe:tab,status:'On Going'}:{});cur={k,id};
+ $('#f').innerHTML=`<h2 style="margin-top:0">${id?'Edit':'Tambah'} ${F.t}</h2>`+F.f.map(([n,l,t,o])=>`<label for="f_${n}">${l}</label>`+(t==='select'?`<select id="f_${n}" name="${n}">${o.map(v=>`<option ${d[n]===v?'selected':''}>${v}</option>`).join('')}</select>`:`<input id="f_${n}" name="${n}" type="${t}" ${t==='number'?'min="0" step="any"':''} value="${d[n]??''}" required>`)).join('')
+ +(k==='p'?'<div class="pv" id="pv"></div>':'')+`<div class="act"><button type="button" class="btn" id="cx">Batal</button><button class="btn p">Simpan</button></div>`;
+ $('#cx').onclick=()=>$('#dlg').close();
+ if(k==='p'){const u=()=>{const n=+$('#f_nilai').value||0,m=+$('#f_modal').value||0,c=calc({nilai:n,modal:m});$('#pv').innerHTML=`<div><span>Potongan pajak 20,5%</span><b>${rp(c.pajak)}</b></div><div><span>Profit setelah pajak dan modal</span><b class="${c.profit<0?'neg':'pos'}">${rp(c.profit)}</b></div>`};$('#f').oninput=u;u();}
+ $('#dlg').showModal();}
+$('#f').onsubmit=async e=>{e.preventDefault();const {k,id}=cur,v={};
+ FORMS[k].f.forEach(([n,,t])=>{const x=$('#f_'+n).value;v[n]=t==='number'?+x:x.trim()});
+ const {error}=await (id?sb.from(T[k]).update(v).eq('id',id):sb.from(T[k]).insert(v));
+ if(error)return fail(error);
+ $('#dlg').close();if(k==='p')tab=v.tipe;load();};
+document.addEventListener('click',e=>{
+ const t=e.target.closest('[data-tab],[data-v],[data-a]');if(!t)return;const D=t.dataset;
+ if(D.v){view=D.v;render();return}
+ if(D.tab){tab=D.tab;render();return}
+ if(D.a==='add')return openForm(D.k);
+ if(D.a==='edit')return openForm(D.k,D.id);
+ if(D.a==='tgl'){const p=S.p.find(x=>x.id===D.id);sb.from('projects').update({status:p.status==='Selesai'?'On Going':'Selesai'}).eq('id',D.id).then(({error})=>error?fail(error):load());return}
+ if(D.a==='del'){
+  if(t.dataset.arm){sb.from(T[D.k]).delete().eq('id',D.id).then(({error})=>error?fail(error):load());return}
+  t.dataset.arm=1;t.textContent='Yakin hapus?';setTimeout(()=>{delete t.dataset.arm;t.textContent='Hapus'},3000);}
+});
+const SUPABASE_URL='https://supabase.com/dashboard/project/bqstywjflynxxlpkmeqv',SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJxc3R5d2pmbHlueHhscGttZXF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1ODI4NzIsImV4cCI6MjEwODE1ODg3Mn0.gdCArnuyvVY9EPAb6t7KMSAbwdTQxhZRuYe53MfnVP0';
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+async function load(){for(const k of ['p','i','s']){const {data,error}=await sb.from(T[k]).select('*').order('created_at');
+ if(error)return fail(error);S[k]=data.map(r=>{for(const f of ['qty','nilai','modal','share'])if(f in r)r[f]=+r[f];return r})}render();}
+function enter(em){$('#login').style.display='none';$('#who').textContent=em;load();}
+sb.auth.getSession().then(({data})=>{if(data.session)enter(data.session.user.email)});
+$('#lf').onsubmit=async e=>{e.preventDefault();$('#err').textContent='Memeriksa...';
+ const {data,error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});
+ if(error){$('#err').textContent='Email atau password salah.';return}
+ $('#pw').value='';$('#err').textContent='';enter(data.user.email)};
+$('#out').onclick=async()=>{await sb.auth.signOut();location.reload()};
+</script>
+</body>
+</html>
