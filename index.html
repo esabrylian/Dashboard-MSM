@@ -1,223 +1,2063 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
 <title>Dashboard Pengadaan - PT. Mulya Sarana Mandiri</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&amp;family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#eef1f4;--card:#fff;--ink:#14213d;--mut:#5d6b82;--line:#d9dfe7;--acc:#0f766e;--acc2:#c98a1b;--bad:#b4363b;--side:#14213d;--sideink:#e8edf5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0e1522;--card:#17202f;--ink:#e8edf5;--mut:#98a5ba;--line:#2a3548;--acc:#2dd4bf;--acc2:#e3a840;--bad:#f0777b;--side:#0a101b}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#0e1522;--card:#17202f;--ink:#e8edf5;--mut:#98a5ba;--line:#2a3548;--acc:#2dd4bf;--acc2:#e3a840;--bad:#f0777b;--side:#0a101b}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;display:grid;grid-template-columns:230px 1fr;min-height:100vh}
-aside{background:var(--side);color:var(--sideink);padding:24px 16px;position:sticky;top:0;height:100vh}
-.brand{font-weight:800;font-size:16px;line-height:1.25;margin:0 8px 28px}
-.brand small{display:block;font-weight:500;opacity:.65;font-size:12px;margin-top:4px}
-nav{display:flex;flex-direction:column;gap:4px}
-nav button{all:unset;cursor:pointer;padding:10px 12px;border-radius:8px;font-weight:500;color:var(--sideink)}
-nav button:hover{background:rgba(255,255,255,.08)}
-nav button.on{background:var(--acc);color:#fff;font-weight:700}
-nav button:focus-visible,.btn:focus-visible{outline:2px solid var(--acc2);outline-offset:2px}
-main{padding:28px;max-width:1100px;width:100%}
-h1{font-size:24px;margin:0 0 4px;font-weight:800}
-h2{font-size:17px;margin:28px 0 10px;font-weight:700}
-.sub{color:var(--mut);margin:0 0 20px}
-.sec{display:none}.sec.on{display:block}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
-.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
-.big{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:4px 0 12px}
-.lbl{color:var(--mut);font-size:13px}
-.bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--line)}
-.bar i{display:block;height:100%}
-.leg{display:flex;gap:16px;margin-top:8px;font-size:13px;color:var(--mut);flex-wrap:wrap}
-.leg b{color:var(--ink)}
-.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-.kpis .n{font-size:20px;font-weight:800}
-.ai{border-left:4px solid var(--acc2)}
-.ai ul{margin:8px 0 0;padding-left:20px}.ai li{margin-bottom:8px}
-.tw{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
-table{border-collapse:collapse;width:100%;min-width:640px}
-th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
-th{font-size:13px;color:var(--mut);font-weight:500}
-tr:last-child td{border-bottom:0}
-td.r,th.r{text-align:right}
-.pos{color:var(--acc);font-weight:700}.neg{color:var(--bad);font-weight:700}
-.empty{padding:22px;color:var(--mut);text-align:center}
-.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:16px}
-.btn{cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:8px;font:inherit;font-weight:500}
-.btn.p{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:700}
-.btn.s{padding:4px 10px;font-size:13px;margin-left:4px}
-.btn.d{color:var(--bad)}
-.tabs{display:flex;gap:6px;margin-bottom:6px}
-.tabs button{cursor:pointer;border:0;background:none;font:inherit;font-weight:700;color:var(--mut);padding:8px 14px;border-bottom:3px solid transparent}
-.tabs button.on{color:var(--ink);border-color:var(--acc)}
-.tag{font-size:12px;padding:2px 8px;border-radius:99px;background:var(--line)}
-dialog{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);padding:22px;width:min(440px,92vw)}
-dialog::backdrop{background:rgba(10,16,27,.55)}
-label{display:block;font-size:13px;color:var(--mut);margin:12px 0 4px}
-input,select{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
-.pv{margin-top:14px;padding:12px;border-radius:8px;background:var(--bg);font-size:14px}
-.pv div{display:flex;justify-content:space-between}
-.act{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
-#login{position:fixed;inset:0;z-index:50;background:var(--side);color:var(--sideink);display:flex;align-items:center;justify-content:center;padding:20px;overflow:auto}
-.lbox{width:min(400px,100%);text-align:center}
-.lbox svg{width:96px;height:96px}
-.lbox h1{font-size:28px;margin:16px 0 4px}
-.lbox p{margin:0 0 24px;opacity:.7}
-.lbox form{background:var(--card);color:var(--ink);border-radius:14px;padding:22px;text-align:left}
-.lbox form label:first-child{margin-top:0}
-.lbox .btn{width:100%;margin-top:18px;padding:11px}
-.rem{display:flex!important;align-items:center;gap:8px;margin-top:14px}.rem input{width:auto}
-#err{color:var(--bad);min-height:20px;font-size:13px;margin-top:10px}
-.who{margin-top:24px;padding:12px 8px 0;border-top:1px solid rgba(255,255,255,.15);font-size:12px;word-break:break-all}
-.who .btn{margin-top:8px;width:100%;background:transparent;color:var(--sideink);border-color:rgba(255,255,255,.3)}
-@media (max-width:820px){.who{display:flex;align-items:center;gap:10px;margin-top:8px;padding:8px 0 0}.who .btn{margin:0;width:auto;padding:4px 12px}
-body{grid-template-columns:1fr}
-aside{position:sticky;top:0;height:auto;padding:12px;z-index:5;padding-top:calc(12px + env(safe-area-inset-top,0px))}
-.brand{margin-bottom:10px}
-nav{flex-direction:row;overflow-x:auto}nav button{white-space:nowrap}
-main{padding:18px}.hero,.kpis{grid-template-columns:1fr}
+:root {
+  --bg-body: #f8fafc;
+  --bg-sidebar: #09131e;
+  --sidebar-hover: rgba(255, 255, 255, 0.06);
+  --sidebar-active: #0ea5e9;
+  --sidebar-text: #94a3b8;
+  --sidebar-text-bright: #f8fafc;
+  --card-bg: #ffffff;
+  --card-header: #fbfcfe;
+  --border: #e2e8f0;
+  --border-subtle: #edf2f7;
+  --ink-primary: #0f172a;
+  --ink-secondary: #475569;
+  --ink-muted: #64748b;
+  --brand-primary: #0284c7;
+  --brand-primary-light: #e0f2fe;
+  --accent-gold: #d97706;
+  --accent-gold-light: #fef3c7;
+  --gold-glow: #f59e0b;
+  --success: #059669;
+  --success-light: #d1fae5;
+  --danger: #e11d48;
+  --danger-light: #ffe4e6;
+  --info: #3b82f6;
+  --info-light: #eff6ff;
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-modal: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Cinzel', serif;
+  --font-mono: 'Space Grotesk', monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-body: #0b1120;
+    --bg-sidebar: #060b13;
+    --sidebar-hover: rgba(255, 255, 255, 0.05);
+    --card-bg: #111a2e;
+    --card-header: #142038;
+    --border: #1e293b;
+    --border-subtle: #192338;
+    --ink-primary: #f8fafc;
+    --ink-secondary: #cbd5e1;
+    --ink-muted: #8292ab;
+    --brand-primary-light: rgba(14, 165, 233, 0.15);
+    --accent-gold-light: rgba(217, 119, 6, 0.15);
+    --success-light: rgba(5, 150, 105, 0.15);
+    --danger-light: rgba(225, 29, 72, 0.15);
+    --info-light: rgba(59, 130, 246, 0.15);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg-body: #0b1120;
+  --bg-sidebar: #060b13;
+  --sidebar-hover: rgba(255, 255, 255, 0.05);
+  --card-bg: #111a2e;
+  --card-header: #142038;
+  --border: #1e293b;
+  --border-subtle: #192338;
+  --ink-primary: #f8fafc;
+  --ink-secondary: #cbd5e1;
+  --ink-muted: #8292ab;
+  --brand-primary-light: rgba(14, 165, 233, 0.15);
+  --accent-gold-light: rgba(217, 119, 6, 0.15);
+  --success-light: rgba(5, 150, 105, 0.15);
+  --danger-light: rgba(225, 29, 72, 0.15);
+  --info-light: rgba(59, 130, 246, 0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-body);
+  color: var(--ink-primary);
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Sidebar Styling */
+aside {
+  background: var(--bg-sidebar);
+  color: var(--sidebar-text);
+  padding: 24px 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 20;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.brand-text h2 {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+}
+.brand-text p {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.nav-group-title {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #475569;
+  font-weight: 700;
+  padding: 16px 12px 6px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+nav button {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--sidebar-text);
+  transition: all 0.15s ease;
+}
+nav button svg {
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+nav button:hover {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-text-bright);
+}
+nav button:hover svg {
+  opacity: 1;
+}
+nav button.on {
+  background: linear-gradient(90deg, rgba(14, 165, 233, 0.15), rgba(14, 165, 233, 0.04));
+  color: #38bdf8;
+  border-left: 3px solid #38bdf8;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding-left: 11px;
+}
+nav button.on svg {
+  opacity: 1;
+  stroke: #38bdf8;
+}
+
+/* User Card at Bottom of Sidebar */
+.user-footer {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.user-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.user-info {
+  flex: 1;
+  min-width: 0;
+}
+.user-info .u-email {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f1f5f9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+.user-info .u-role {
+  font-size: 10.5px;
+  color: #f59e0b;
+  display: block;
+}
+.btn-logout {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.btn-logout:hover {
+  background: rgba(225, 29, 72, 0.15);
+  color: #fb7185;
+}
+
+/* Main Area */
+main {
+  padding: 32px 40px;
+  padding-top: max(24px, env(safe-area-inset-top));
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+  padding-left: max(32px, env(safe-area-inset-left));
+  padding-right: max(32px, env(safe-area-inset-right));
+  max-width: 1400px;
+  width: 100%;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.page-title-box h1 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.page-title-box p {
+  color: var(--ink-muted);
+  font-size: 13.5px;
+  margin-top: 4px;
+}
+
+.sec { display: none; }
+.sec.on { display: block; animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Cards & Layout */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+.hero-dashboard {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.card-summary {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(14, 165, 233, 0.03) 100%);
+}
+.card-summary-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.lbl-tag {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--success-light);
+  color: var(--success);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+}
+.badge-live::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+  animation: pulseDot 2s infinite;
+}
+@keyframes pulseDot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+.val-large {
+  font-family: var(--font-sans);
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink-primary);
+  margin: 12px 0 16px;
+}
+
+.progress-track {
+  height: 10px;
+  border-radius: 6px;
+  background: var(--border-subtle);
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 14px;
+}
+.progress-fill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+.progress-fill.gov {
+  background: linear-gradient(90deg, #0284c7, #38bdf8);
+}
+.progress-fill.b2b {
+  background: linear-gradient(90deg, #d97706, #fbbf24);
+}
+
+.legend-row {
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+  color: var(--ink-secondary);
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+.legend-dot.gov { background: #0284c7; }
+.legend-dot.b2b { background: #d97706; }
+.legend-val {
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-left: 4px;
+}
+
+/* AI Advisory Card */
+.card-ai {
+  padding: 24px;
+  border-left: 4px solid var(--accent-gold);
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(217, 119, 6, 0.03) 100%);
+  display: flex;
+  flex-direction: column;
+}
+.card-ai-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-bottom: 14px;
+}
+.ai-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--ink-secondary);
+  line-height: 1.5;
+  flex: 1;
+}
+.ai-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+:root[data-theme="dark"] .ai-list li {
+  background: rgba(0, 0, 0, 0.2);
+}
+.ai-icon-bullet {
+  color: var(--accent-gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* KPIs Grid */
+.kpis-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 28px;
+}
+.kpi-card {
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.kpi-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+.kpi-val {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-top: 4px;
+}
+.kpi-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.kpi-icon-box.blue { background: var(--brand-primary-light); color: var(--brand-primary); }
+.kpi-icon-box.amber { background: var(--accent-gold-light); color: var(--accent-gold); }
+.kpi-icon-box.green { background: var(--success-light); color: var(--success); }
+
+/* Tables */
+.section-subtitle-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 32px 0 14px;
+}
+.section-title {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  min-width: 720px;
+}
+thead tr {
+  background: var(--card-header);
+  border-bottom: 1px solid var(--border);
+}
+th {
+  padding: 13px 18px;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+  text-align: left;
+}
+th.r, td.r { text-align: right; }
+tbody tr {
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background 0.15s ease;
+}
+tbody tr:last-child {
+  border-bottom: none;
+}
+tbody tr:hover {
+  background: rgba(14, 165, 233, 0.02);
+}
+td {
+  padding: 14px 18px;
+  color: var(--ink-primary);
+  font-weight: 500;
+}
+.td-name {
+  font-weight: 600;
+  color: var(--ink-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Badges & Pills */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+.pill-gov {
+  background: var(--brand-primary-light);
+  color: var(--brand-primary);
+}
+.pill-b2b {
+  background: var(--accent-gold-light);
+  color: var(--accent-gold);
+}
+.pill-ongoing {
+  background: #f1f5f9;
+  color: #475569;
+}
+.pill-selesai {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.pos { color: var(--success); font-weight: 700; font-family: var(--font-sans); }
+.neg { color: var(--danger); font-weight: 700; font-family: var(--font-sans); }
+
+.empty-state {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--ink-muted);
+}
+.empty-state svg {
+  margin-bottom: 12px;
+  opacity: 0.4;
+}
+
+/* Buttons */
+.btn {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--ink-primary);
+  transition: all 0.15s ease;
+  box-shadow: var(--shadow-xs);
+  touch-action: manipulation;
+}
+.btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  border-color: #0284c7;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(2, 132, 199, 0.25);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+  border-color: #0369a1;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(2, 132, 199, 0.35);
+}
+.btn-sm {
+  min-height: 36px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  border-radius: 6px;
+}
+.btn-danger-ghost {
+  color: var(--danger);
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+.btn-danger-ghost:hover {
+  background: var(--danger-light);
+  border-color: transparent;
+  color: var(--danger);
+}
+
+/* Tab Navigation */
+.tabs-segmented {
+  display: inline-flex;
+  background: var(--border-subtle);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  gap: 2px;
+  margin-bottom: 16px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.tabs-segmented button {
+  all: unset;
+  cursor: pointer;
+  padding: 8px 18px;
+  min-height: 40px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.tabs-segmented button:hover {
+  color: var(--ink-primary);
+}
+.tabs-segmented button.on {
+  background: var(--card-bg);
+  color: var(--brand-primary);
+  box-shadow: var(--shadow-xs);
+}
+
+/* Dialog & Form */
+dialog {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  color: var(--ink-primary);
+  padding: 24px;
+  width: min(500px, calc(100vw - 32px));
+  box-shadow: var(--shadow-modal);
+  margin: auto;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+dialog::backdrop {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+}
+.form-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: var(--ink-primary);
+}
+.form-group {
+  margin-bottom: 16px;
+}
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  margin-bottom: 8px;
+}
+input, select {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card-bg);
+  color: var(--ink-primary);
+  font-family: inherit;
+  font-size: 16px; /* 16px prevents iOS Safari auto zoom */
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+.preview-calc-box {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: var(--border-subtle);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.preview-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.preview-row span {
+  color: var(--ink-muted);
+}
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/* Login Screen Overhaul with iOS/Android Safe Area Support */
+#login {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: radial-gradient(circle at top right, #172554, #0b1329 60%, #030712);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-top: max(16px, env(safe-area-inset-top));
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s ease;
+}
+.login-panel {
+  width: 100%;
+  max-width: 440px;
+  margin: auto;
+  background: rgba(17, 24, 39, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 34px 28px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  box-sizing: border-box;
+}
+.login-panel .logo-badge {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-panel h1 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.login-panel .company-subtitle {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+.login-form-inner {
+  text-align: left;
+}
+.login-form-inner input {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  min-height: 48px;
+  font-size: 16px; /* prevent auto-zoom iOS */
+}
+.login-form-inner input:focus {
+  border-color: #38bdf8;
+  background: rgba(255, 255, 255, 0.09);
+}
+.login-form-inner label {
+  color: #cbd5e1;
+}
+.remember-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-size: 13.5px;
+  color: #94a3b8;
+  cursor: pointer;
+  min-height: 38px;
+  user-select: none;
+}
+.remember-row input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+  accent-color: #0284c7;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+#err {
+  color: #fb7185;
+  font-size: 13px;
+  font-weight: 600;
+  min-height: 20px;
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   EXCLUSIVE LUXURY WELCOME OVERLAY & PRESTIGE TRANSITION
+   ========================================================================== */
+#luxury-welcome {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-top: max(16px, env(safe-area-inset-top));
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+  background: radial-gradient(circle at 50% 35%, #0f1c30 0%, #060b14 65%, #020408 100%);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.7s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+#luxury-welcome.active {
+  opacity: 1;
+  pointer-events: all;
+  visibility: visible;
+}
+
+#luxury-welcome.fade-out {
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ambient Shimmer & Streaks */
+.lux-ambience {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.lux-glow-orb {
+  position: absolute;
+  width: min(650px, 90vw);
+  height: min(650px, 90vw);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(217, 119, 6, 0.16) 0%, rgba(245, 158, 11, 0.06) 45%, transparent 70%);
+  filter: blur(55px);
+  animation: luxPulse 4s ease-in-out infinite alternate;
+}
+.lux-gold-lines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(45deg, rgba(217, 119, 6, 0.02) 0px, rgba(217, 119, 6, 0.02) 1px, transparent 1px, transparent 60px);
+  opacity: 0.7;
+}
+
+.lux-streak-1 {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 140%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.4), transparent);
+  transform: rotate(-25deg);
+  animation: streakSlide 6s infinite ease-in-out;
+}
+.lux-streak-2 {
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 140%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(217, 119, 6, 0.35), transparent);
+  transform: rotate(-25deg);
+  animation: streakSlide 7s infinite ease-in-out 1s;
+}
+
+@keyframes luxPulse {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.95; }
+}
+@keyframes streakSlide {
+  0% { transform: translateY(-80px) rotate(-25deg); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(80px) rotate(-25deg); opacity: 0; }
+}
+
+/* Floating Golden Dust Particles */
+.lux-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.lux-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fbbf24;
+  box-shadow: 0 0 8px #f59e0b;
+  opacity: 0;
+  animation: particleFloat 4s infinite linear;
+}
+.lux-particle:nth-child(1) { top: 20%; left: 25%; animation-delay: 0.2s; animation-duration: 4.5s; }
+.lux-particle:nth-child(2) { top: 70%; left: 18%; animation-delay: 1.1s; animation-duration: 5.2s; }
+.lux-particle:nth-child(3) { top: 35%; left: 78%; animation-delay: 0.7s; animation-duration: 4s; }
+.lux-particle:nth-child(4) { top: 80%; left: 72%; animation-delay: 1.8s; animation-duration: 4.8s; }
+.lux-particle:nth-child(5) { top: 15%; left: 60%; animation-delay: 2.3s; animation-duration: 5.5s; }
+.lux-particle:nth-child(6) { top: 60%; left: 45%; animation-delay: 0.9s; animation-duration: 3.8s; }
+
+@keyframes particleFloat {
+  0% { transform: translateY(20px) scale(0.6); opacity: 0; }
+  50% { opacity: 0.85; transform: translateY(-15px) scale(1.2); }
+  100% { transform: translateY(-40px) scale(0.4); opacity: 0; }
+}
+
+/* Prestige Transition Card */
+.lux-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 520px;
+  margin: auto;
+  background: linear-gradient(145deg, rgba(16, 26, 44, 0.88) 0%, rgba(8, 14, 25, 0.95) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.32);
+  box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.8), 0 0 35px rgba(217, 119, 6, 0.18), inset 0 1px 0 rgba(254, 240, 138, 0.25);
+  border-radius: 24px;
+  padding: 36px 28px 30px;
+  text-align: center;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transform: scale(0.94) translateY(12px);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+#luxury-welcome.active .lux-card {
+  transform: scale(1) translateY(0);
+}
+
+/* Gold Emblem Shimmer Ring */
+.lux-emblem-wrap {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lux-aura-ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #d97706, #fbbf24, #f59e0b, #b45309, #fde68a, #d97706);
+  filter: blur(4px);
+  opacity: 0.75;
+  animation: spinRing 7s linear infinite;
+}
+.lux-aura-border {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, #fef08a, #d97706, #fbbf24, #78350f, #fef08a);
+  animation: spinRing 4s linear infinite reverse;
+}
+.lux-emblem-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #1e2e4a 0%, #0a1120 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.3), 0 8px 20px rgba(0, 0, 0, 0.6);
+  padding: 10px;
+}
+.lux-emblem-inner img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.35));
+}
+@keyframes spinRing {
+  100% { transform: rotate(360deg); }
+}
+
+/* Typography & Titles */
+.lux-greeting-sub {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.lux-greeting-sub::before, .lux-greeting-sub::after {
+  content: "";
+  height: 1px;
+  width: 28px;
+  background: linear-gradient(90deg, transparent, #f59e0b);
+}
+.lux-greeting-sub::after {
+  background: linear-gradient(90deg, #f59e0b, transparent);
+}
+
+.lux-user-name {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #ffffff 30%, #fde68a 65%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 25px rgba(245, 158, 11, 0.3);
+  position: relative;
+  display: inline-block;
+  word-break: break-word;
+}
+.lux-user-name::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: textShimmer 2.8s infinite;
+}
+@keyframes textShimmer {
+  0% { left: -100%; }
+  60%, 100% { left: 160%; }
+}
+
+/* Gold Foil Badge */
+.lux-role-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, rgba(217, 119, 6, 0.22), rgba(245, 158, 11, 0.12));
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.15), inset 0 1px 0 rgba(254, 240, 138, 0.3);
+  color: #fef08a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+  max-width: 100%;
+  line-height: 1.3;
+}
+.lux-role-badge svg {
+  color: #fbbf24;
+  flex-shrink: 0;
+}
+
+/* Progress Beam & Dynamic Status */
+.lux-progress-box {
+  margin-top: 8px;
+  padding: 0 8px;
+}
+.lux-progress-beam-track {
+  height: 5px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 12px;
+}
+.lux-progress-beam {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #d97706, #f59e0b, #fef08a);
+  box-shadow: 0 0 12px #f59e0b;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+.lux-status-txt {
+  font-size: 12px;
+  color: #cbd5e1;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  line-height: 1.4;
+}
+.lux-status-txt .lux-spinner-dots {
+  display: inline-flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.lux-spinner-dots span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #f59e0b;
+  animation: dotBlink 1.4s infinite ease-in-out both;
+}
+.lux-spinner-dots span:nth-child(1) { animation-delay: -0.32s; }
+.lux-spinner-dots span:nth-child(2) { animation-delay: -0.16s; }
+@keyframes dotBlink {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1.3); }
+}
+
+/* Security Encryption Footnote */
+.lux-security-footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 10.5px;
+  color: #64748b;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+.lux-security-footer svg {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+/* Responsive Overrides for Mobile (iPhone & Android) */
+@media (max-width: 960px) {
+  body {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+  aside {
+    position: sticky;
+    top: 0;
+    height: auto;
+    padding: 12px 16px;
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+    z-index: 30;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .brand-wrapper {
+    padding-bottom: 8px;
+    border-bottom: none;
+    justify-content: space-between;
+  }
+  .nav-group-title { display: none; }
+  nav {
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+    padding: 4px 0;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav button {
+    white-space: nowrap;
+    padding: 8px 14px;
+    min-height: 42px;
+    font-size: 13px;
+  }
+  nav button.on {
+    border-left: none;
+    border-bottom: 2px solid #38bdf8;
+    border-radius: var(--radius-sm);
+    padding-left: 14px;
+  }
+  .user-footer {
+    display: none;
+  }
+  main {
+    padding: 16px;
+    padding-top: 16px;
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+  .hero-dashboard, .kpis-grid {
+    grid-template-columns: 1fr;
+  }
+  .val-large {
+    font-size: 28px;
+  }
+  .legend-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .page-header .btn {
+    width: 100%;
+  }
+  .login-panel {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+  .lux-card {
+    padding: 28px 18px 22px;
+    border-radius: 20px;
+  }
+  .lux-user-name {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-panel {
+    padding: 24px 16px;
+  }
+  .lux-card {
+    padding: 24px 14px 20px;
+  }
+  .lux-emblem-wrap {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 16px;
+  }
+  .lux-role-badge {
+    font-size: 10.5px;
+    padding: 5px 12px;
+  }
 }
 </style>
 </head>
 <body>
-<div id="login"><div class="lbox">
-<svg viewBox="0 0 96 96" role="img" aria-label="Logo PT. Mulya Sarana Mandiri"><rect width="96" height="96" rx="22" fill="#0f766e"/><path d="M48 18 74 32v28L48 74 22 60V32z" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/><path d="M22 32l26 14 26-14M48 46v28" fill="none" stroke="#c98a1b" stroke-width="4" stroke-linejoin="round"/></svg>
-<h1>Selamat Datang</h1><p>PT. MULYA SARANA MANDIRI<br>Dashboard Pengadaan</p>
-<form id="lf"><label for="em">Email</label><input id="em" type="email" autocomplete="username" required>
-<label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" required>
-<div id="err" role="alert"></div><button class="btn p">Masuk</button></form></div></div>
+<!-- Login Modal -->
+<div id="login">
+<div class="login-panel">
+<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;"><img alt="PT. Mulya Sarana Mandiri" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD11_5oyqxRqs0AHY4suixPl6DkzFs4fKor9E8-FK6QJ54FRMTFFKiQMbwnchqKEkZgh7K9RQRA601TrLDhqtqKaIztNL4N1savZ7Y43Rid5KDEwBKVySONJG-50A35P30j3EkRZvYIZo9caLII2yhbBXsRuM2zsLh6TwkBQ9FDO7rV1UN6wLPZdyEoZTqX7O-xrhF767SkSt8NsTIz5NfV8_6_xLzbM0mD8wfKAxbCOPDQb4iyiDBp" style="max-height: 64px; max-width: 220px; object-fit: contain; filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 12px);"/></div>
+<h1>Masuk Sistem</h1>
+<p class="company-subtitle">PT. MULYA SARANA MANDIRI • Portal Pengadaan</p>
+<form class="login-form-inner" id="lf">
+<div class="form-group">
+<label for="em">Alamat Email</label>
+<input autocomplete="username" id="em" placeholder="nama@mulyasaranamandiri.co.id" required="" type="email" value="hanifhawari@gmail.com"/>
+</div>
+<div class="form-group">
+<label for="pw">Kata Sandi</label>
+<input autocomplete="current-password" id="pw" placeholder="••••••••" required="" type="password" value="hans1212"/>
+</div>
+<label class="remember-row">
+<input checked="" id="rm" type="checkbox"/> <span>Ingat saya di perangkat ini</span>
+</label>
+<div id="err" role="alert"></div>
+<button class="btn btn-primary" style="width: 100%; margin-top: 16px; min-height: 48px;">Masuk ke Dashboard</button>
+</form>
+</div>
+</div>
+<!-- Exclusive Luxury Welcome Overlay -->
+<div aria-hidden="true" id="luxury-welcome">
+<div class="lux-ambience">
+<div class="lux-glow-orb"></div>
+<div class="lux-gold-lines"></div>
+<div class="lux-streak-1"></div>
+<div class="lux-streak-2"></div>
+<div class="lux-particles">
+<div class="lux-particle"></div>
+<div class="lux-particle"></div>
+<div class="lux-particle"></div>
+<div class="lux-particle"></div>
+<div class="lux-particle"></div>
+<div class="lux-particle"></div>
+</div>
+</div>
+<div class="lux-card">
+<!-- Shimmering Gold Aura & Emblem -->
+<div class="lux-emblem-wrap">
+<div class="lux-aura-ring"></div>
+<div class="lux-aura-border"></div>
+<div class="lux-emblem-inner">
+<img alt="PT. Mulya Sarana Mandiri" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD11_5oyqxRqs0AHY4suixPl6DkzFs4fKor9E8-FK6QJ54FRMTFFKiQMbwnchqKEkZgh7K9RQRA601TrLDhqtqKaIztNL4N1savZ7Y43Rid5KDEwBKVySONJG-50A35P30j3EkRZvYIZo9caLII2yhbBXsRuM2zsLh6TwkBQ9FDO7rV1UN6wLPZdyEoZTqX7O-xrhF767SkSt8NsTIz5NfV8_6_xLzbM0mD8wfKAxbCOPDQb4iyiDBp"/>
+</div>
+</div>
+<!-- Exclusive Greeting -->
+<div class="lux-greeting-sub">Selamat Datang Kembali</div>
+<div class="lux-user-name" id="lux-welcome-name">Hanif Hawari</div>
+<div>
+<div class="lux-role-badge">
+<svg fill="none" height="15" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+<span id="lux-role-text">Akses Otorisasi Eksekutif • PT. Mulya Sarana Mandiri</span>
+</div>
+</div>
+<!-- Progress Beam -->
+<div class="lux-progress-box">
+<div class="lux-progress-beam-track">
+<div class="lux-progress-beam" id="lux-progress-beam"></div>
+</div>
+<div class="lux-status-txt">
+<span id="lux-status-label">Mempersiapkan data pengadaan &amp; analitik eksekutif</span>
+<span class="lux-spinner-dots">
+<span></span><span></span><span></span>
+</span>
+</div>
+</div>
+<!-- Security Footnote -->
+<div class="lux-security-footer">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="14"><rect height="11" rx="2" ry="2" width="18" x="3" y="11"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+<span>Enkripsi Sesi Korporat 256-Bit Aktif • Sesi Terverifikasi Aman</span>
+</div>
+</div>
+</div>
+<!-- Sidebar Chrome -->
 <aside>
-<p class="brand">PT. MULYA SARANA MANDIRI<small>Dashboard Pengadaan</small></p>
+<div>
+<div class="brand-wrapper">
+<div class="brand-icon" style="background: transparent; box-shadow: none; width: auto; height: 38px; display: flex; align-items: center;"><img alt="PT. Mulya Sarana Mandiri" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD11_5oyqxRqs0AHY4suixPl6DkzFs4fKor9E8-FK6QJ54FRMTFFKiQMbwnchqKEkZgh7K9RQRA601TrLDhqtqKaIztNL4N1savZ7Y43Rid5KDEwBKVySONJG-50A35P30j3EkRZvYIZo9caLII2yhbBXsRuM2zsLh6TwkBQ9FDO7rV1UN6wLPZdyEoZTqX7O-xrhF767SkSt8NsTIz5NfV8_6_xLzbM0mD8wfKAxbCOPDQb4iyiDBp" style="max-height: 38px; max-width: 48px; object-fit: contain;"/></div>
+<div class="brand-text">
+<h2>PT. MULYA SARANA MANDIRI</h2>
+<p>Procurement ERP v2.4</p>
+</div>
+</div>
+<div class="nav-group-title">Menu Utama</div>
 <nav id="nav"></nav>
-<div class="who"><span id="who"></span><button class="btn" id="out">Keluar</button></div>
+</div>
+<div class="user-footer">
+<div class="user-chip">
+<div class="user-avatar" id="avatar-letter">H</div>
+<div class="user-info">
+<span class="u-email" id="who">Direktur Utama</span>
+<span class="u-role" id="user-role-label">Akses Otorisasi Eksekutif</span>
+</div>
+<button class="btn-logout" id="out" title="Keluar dari akun">
+<svg fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" x2="9" y1="12" y2="12"></line></svg>
+</button>
+</div>
+</div>
 </aside>
+<!-- Main Views -->
 <main>
 <section class="sec" id="v-dash"></section>
 <section class="sec" id="v-pgd"></section>
 <section class="sec" id="v-inv"></section>
 <section class="sec" id="v-sup"></section>
 </main>
+<!-- Unified Modal -->
 <dialog id="dlg"><form id="f"></form></dialog>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
-const $=s=>document.querySelector(s);
-const rp=n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n||0);
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
-let S={p:[],i:[],s:[]};const T={p:'projects',i:'investors',s:'suppliers'};
-const fail=e=>alert('Gagal: '+e.message);
-const calc=p=>{const pajak=p.nilai*.205;return{pajak,profit:p.nilai-pajak-p.modal}};
-const sum=(a,f)=>a.reduce((t,x)=>t+f(x),0);
-let view='dash',tab='Pemerintah';
-const VIEWS=[['dash','Dashboard'],['pgd','Pengadaan'],['inv','Investor'],['sup','Kontak Supplier']];
+const $ = s => document.querySelector(s);
+const rp = n => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(n || 0);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
 
-function saran(){
- const all=S.p,on=all.filter(x=>x.status!=='Selesai'),done=all.filter(x=>x.status==='Selesai'),o=[];
- if(!all.length)return['Mulai dengan menambahkan project pertama di menu Pengadaan agar saran bisa dihitung.'];
- const tot=sum(all,x=>x.nilai),gp=sum(all.filter(x=>x.tipe==='Pemerintah'),x=>x.nilai)/tot;
- if(gp>.7)o.push(`${Math.round(gp*100)}% nilai project berasal dari pemerintah. Perluas pasar B2B agar arus kas tidak bergantung pada siklus pembayaran pemerintah.`);
- else if(gp<.3)o.push(`Project didominasi B2B (${Math.round((1-gp)*100)}%). Ikuti lebih banyak tender pemerintah untuk menaikkan nilai kontrak.`);
- else o.push('Komposisi pengadaan pemerintah dan B2B sudah seimbang. Pertahankan untuk menjaga risiko tetap tersebar.');
- const m=sum(all,x=>calc(x).profit)/tot,mp=(m*100).toFixed(1).replace('.',',')+'%';
- if(m<.1)o.push(`Margin bersih rata-rata hanya ${mp} setelah pajak 20,5% dan modal. Negosiasikan harga modal dengan 2-3 supplier atau naikkan harga penawaran.`);
- else o.push(`Margin bersih rata-rata ${mp} tergolong sehat. Prioritaskan jenis barang dengan margin tertinggi pada penawaran berikutnya.`);
- const rugi=all.filter(x=>calc(x).profit<0);
- if(rugi.length)o.push(`${rugi.length} project berprofit negatif (${esc(rugi.map(x=>x.nama).join(', '))}). Tinjau ulang harga atau modalnya segera.`);
- if(!on.length)o.push('Tidak ada project berjalan. Cari tender atau penawaran B2B baru supaya omzet tidak berhenti.');
- else{const von=sum(on,x=>x.nilai),big=on.reduce((a,b)=>a.nilai>b.nilai?a:b);
-  if(on.length>1&&big.nilai/von>.6)o.push(`Project ${esc(big.nama)} menyumbang ${Math.round(big.nilai/von*100)}% nilai yang sedang berjalan. Kegagalan di satu project berdampak besar, tambahkan project lain.`);
-  const need=sum(on,x=>x.modal),dana=sum(S.i,x=>x.modal);
-  if(need>dana&&S.i.length)o.push(`Kebutuhan modal project berjalan (${rp(need)}) melebihi total dana investor (${rp(dana)}). Siapkan tambahan investor atau pembiayaan.`);}
- if(sum(S.i,x=>x.share)>100)o.push('Total persentase bagi hasil investor melebihi 100%. Periksa kembali menu Investor.');
- if(S.s.length<3)o.push('Supplier terdaftar masih sedikit. Tambahkan supplier alternatif agar harga modal bisa dibandingkan.');
- return o;}
+/* ===== Supabase (sama dengan versi index.html sebelumnya) ===== */
+const SUPABASE_URL = 'https://bqstywjflynxxlpkmeqv.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJxc3R5d2pmbHlueHhscGttZXF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1ODI4NzIsImV4cCI6MjEwODE1ODg3Mn0.gdCArnuyvVY9EPAb6t7KMSAbwdTQxhZRuYe53MfnVP0';
 
-function rDash(){
- const on=S.p.filter(x=>x.status!=='Selesai'),done=S.p.filter(x=>x.status==='Selesai');
- const von=sum(on,x=>x.nilai),g=sum(on.filter(x=>x.tipe==='Pemerintah'),x=>x.nilai),b=von-g;
- const gw=von?g/von*100:0,pr=sum(done,x=>calc(x).profit);
- $('#v-dash').innerHTML=`<h1>Dashboard</h1><p class="sub">Ringkasan pengadaan yang sedang berjalan</p>
- <div class="hero"><div class="card"><div class="lbl">Nilai project sedang berjalan</div><div class="big">${rp(von)}</div>
- <div class="bar"><i style="width:${gw}%;background:var(--acc)"></i><i style="width:${von?100-gw:0}%;background:var(--acc2)"></i></div>
- <div class="leg"><span><span class="dot" style="background:var(--acc)"></span>Pemerintah <b>${rp(g)}</b></span><span><span class="dot" style="background:var(--acc2)"></span>B2B <b>${rp(b)}</b></span></div></div>
- <div class="card ai"><b>Saran AI untuk kemajuan PT</b><ul>${saran().map(s=>`<li>${s}</li>`).join('')}</ul></div></div>
- <div class="kpis"><div class="card"><div class="lbl">Project berjalan</div><div class="n">${on.length}</div></div>
- <div class="card"><div class="lbl">Project selesai</div><div class="n">${done.length}</div></div>
- <div class="card"><div class="lbl">Profit bersih (selesai)</div><div class="n ${pr<0?'neg':'pos'}">${rp(pr)}</div></div></div>
- <h2>Pengadaan sedang berjalan</h2>${tbl(on,false)}`;}
+/* Sesi login: "Ingat saya" dicentang -> localStorage, tidak -> sessionStorage */
+const authStore = {
+  getItem: k => { try { return localStorage.getItem(k) ?? sessionStorage.getItem(k); } catch(e) { return null; } },
+  setItem: (k, v) => {
+    try {
+      const keep = localStorage.getItem('msm-rm') === '1';
+      (keep ? localStorage : sessionStorage).setItem(k, v);
+      (keep ? sessionStorage : localStorage).removeItem(k);
+    } catch(e) {}
+  },
+  removeItem: k => { try { localStorage.removeItem(k); sessionStorage.removeItem(k); } catch(e) {} }
+};
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY, { auth: { storage: authStore } });
 
-function tbl(list,act){
- if(!list.length)return`<div class="tw"><div class="empty">Belum ada project di sini.</div></div>`;
- return`<div class="tw"><table><tr><th>Nama barang</th><th>Tipe</th><th class="r">Qty</th><th class="r">Nilai project</th><th class="r">Modal</th><th class="r">Pajak 20,5%</th><th class="r">Profit bersih</th>${act?'<th></th>':''}</tr>
- ${list.map(p=>{const c=calc(p);return`<tr><td>${esc(p.nama)}</td><td><span class="tag">${p.tipe}</span></td><td class="r">${p.qty}</td><td class="r">${rp(p.nilai)}</td><td class="r">${rp(p.modal)}</td><td class="r">${rp(c.pajak)}</td><td class="r ${c.profit<0?'neg':'pos'}">${rp(c.profit)}</td>
- ${act?`<td class="r"><button class="btn s" data-a="tgl" data-id="${p.id}">${p.status==='Selesai'?'Buka lagi':'Tandai selesai'}</button><button class="btn s" data-a="edit" data-k="p" data-id="${p.id}">Edit</button><button class="btn s d" data-a="del" data-k="p" data-id="${p.id}">Hapus</button></td>`:''}</tr>`}).join('')}</table></div>`;}
+let S = { p: [], i: [], s: [] };
+const T = { p: 'projects', i: 'investors', s: 'suppliers' };
+const fail = e => alert('Gagal: ' + e.message);
+const sameId = (a, b) => String(a) === String(b);
 
-function rPgd(){
- const l=S.p.filter(x=>x.tipe===tab);
- $('#v-pgd').innerHTML=`<div class="top"><div><h1>Pengadaan</h1><p class="sub" style="margin:0">Kelola project pemerintah dan B2B</p></div><button class="btn p" data-a="add" data-k="p">+ Tambah pengadaan</button></div>
- <div class="tabs"><button data-tab="Pemerintah" class="${tab==='Pemerintah'?'on':''}">Pengadaan Pemerintah</button><button data-tab="B2B" class="${tab==='B2B'?'on':''}">Pengadaan B2B</button></div>
- <h2>Project on going</h2>${tbl(l.filter(x=>x.status!=='Selesai'),true)}
- <h2>Project selesai</h2>${tbl(l.filter(x=>x.status==='Selesai'),true)}`;}
+async function load() {
+  for (const k of ['p', 'i', 's']) {
+    const { data, error } = await sb.from(T[k]).select('*').order('created_at');
+    if (error) return fail(error);
+    S[k] = data.map(r => {
+      for (const f of ['qty', 'nilai', 'modal', 'share']) if (f in r) r[f] = +r[f];
+      return r;
+    });
+  }
+  render();
+}
+const calc = p => {
+  const pajak = p.nilai * 0.205;
+  return { pajak, profit: p.nilai - pajak - p.modal };
+};
+const sum = (a, f) => a.reduce((t, x) => t + f(x), 0);
 
-function rInv(){
- const pr=sum(S.p.filter(x=>x.status==='Selesai'),x=>calc(x).profit);
- $('#v-inv').innerHTML=`<div class="top"><div><h1>Investor</h1><p class="sub" style="margin:0">Keuntungan dihitung dari persentase bagi hasil x total profit bersih project selesai (${rp(pr)})</p></div><button class="btn p" data-a="add" data-k="i">+ Tambah investor</button></div>
- ${S.i.length?`<div class="tw"><table><tr><th>Nama investor</th><th class="r">Modal disetor</th><th class="r">Bagi hasil</th><th class="r">Keuntungan</th><th></th></tr>
- ${S.i.map(i=>`<tr><td>${esc(i.nama)}</td><td class="r">${rp(i.modal)}</td><td class="r">${i.share}%</td><td class="r pos">${rp(pr*i.share/100)}</td><td class="r"><button class="btn s" data-a="edit" data-k="i" data-id="${i.id}">Edit</button><button class="btn s d" data-a="del" data-k="i" data-id="${i.id}">Hapus</button></td></tr>`).join('')}</table></div>`:'<div class="tw"><div class="empty">Belum ada investor.</div></div>'}`;}
+let view = 'dash', tab = 'Pemerintah';
+const VIEWS = [
+  ['dash', 'Dashboard', '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>'],
+  ['pgd', 'Pengadaan', '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-2z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>'],
+  ['inv', 'Investor', '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>'],
+  ['sup', 'Kontak Supplier', '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>']
+];
 
-function rSup(){
- $('#v-sup').innerHTML=`<div class="top"><div><h1>Kontak Supplier</h1><p class="sub" style="margin:0">Daftar supplier untuk pemesanan barang</p></div><button class="btn p" data-a="add" data-k="s">+ Tambah supplier</button></div>
- ${S.s.length?`<div class="tw"><table><tr><th>Nama supplier</th><th>Bidang</th><th>Kontak</th><th></th></tr>
- ${S.s.map(s=>`<tr><td>${esc(s.nama)}</td><td>${esc(s.bidang)}</td><td>${esc(s.kontak)}</td><td class="r"><button class="btn s" data-a="edit" data-k="s" data-id="${s.id}">Edit</button><button class="btn s d" data-a="del" data-k="s" data-id="${s.id}">Hapus</button></td></tr>`).join('')}</table></div>`:'<div class="tw"><div class="empty">Belum ada supplier.</div></div>'}`;}
+function saran() {
+  const all = S.p, on = all.filter(x => x.status !== 'Selesai'), done = all.filter(x => x.status === 'Selesai'), o = [];
+  if (!all.length) return ['Mulai dengan menambahkan project pertama di menu Pengadaan agar rekomendasi strategis dapat dianalisis.'];
+  
+  const tot = sum(all, x => x.nilai), gp = tot ? sum(all.filter(x => x.tipe === 'Pemerintah'), x => x.nilai) / tot : 0;
+  if (gp > 0.7) o.push(`${Math.round(gp * 100)}% nilai portofolio berasal dari instansi pemerintah. Diversifikasi ke pasar B2B swasta guna memitigasi risiko tempo termin pembayaran.`);
+  else if (gp < 0.3) o.push(`Project saat ini didominasi sektor B2B (${Math.round((1 - gp) * 100)}%). Tingkatkan partisipasi pada lelang LPSE pemerintah untuk memperbesar skala omzet.`);
+  else o.push('Distribusi antara kontrak Pemerintah dan B2B seimbang optimal.');
 
-function render(){
- $('#nav').innerHTML=VIEWS.map(([k,t])=>`<button data-v="${k}" class="${k===view?'on':''}">${t}</button>`).join('');
- document.querySelectorAll('.sec').forEach(s=>s.classList.toggle('on',s.id==='v-'+view));
- ({dash:rDash,pgd:rPgd,inv:rInv,sup:rSup})[view]();}
+  const m = tot ? sum(all, x => calc(x).profit) / tot : 0;
+  const mp = (m * 100).toFixed(1).replace('.', ',') + '%';
+  if (m < 0.1) o.push(`Rata-rata margin bersih berada di level ${mp} pasca potongan pajak 20,5%. Pertimbangkan re-negosiasi harga vendor supplier atau penyesuaian penawaran harga jual.`);
+  else o.push(`Tingkat net profit margin rata-rata sebesar ${mp} dalam batas ideal dan sangat kompetitif.`);
 
-const FORMS={
- p:{t:'pengadaan',f:[['tipe','Tipe pengadaan','select',['Pemerintah','B2B']],['nama','Nama barang','text'],['qty','Quantity','number'],['nilai','Nilai project / harga jual (Rp)','number'],['modal','Modal (Rp)','number'],['status','Status','select',['On Going','Selesai']]]},
- i:{t:'investor',f:[['nama','Nama investor','text'],['modal','Modal disetor (Rp)','number'],['share','Bagi hasil (%)','number']]},
- s:{t:'supplier',f:[['nama','Nama supplier','text'],['bidang','Bidang supplier','text'],['kontak','Kontak supplier (telepon/email)','text']]}};
-let cur=null;
-function openForm(k,id){
- const F=FORMS[k],d=id?S[k].find(x=>x.id===id):(k==='p'?{tipe:tab,status:'On Going'}:{});cur={k,id};
- $('#f').innerHTML=`<h2 style="margin-top:0">${id?'Edit':'Tambah'} ${F.t}</h2>`+F.f.map(([n,l,t,o])=>`<label for="f_${n}">${l}</label>`+(t==='select'?`<select id="f_${n}" name="${n}">${o.map(v=>`<option ${d[n]===v?'selected':''}>${v}</option>`).join('')}</select>`:`<input id="f_${n}" name="${n}" type="${t}" ${t==='number'?'min="0" step="any"':''} value="${d[n]??''}" required>`)).join('')
- +(k==='p'?'<div class="pv" id="pv"></div>':'')+`<div class="act"><button type="button" class="btn" id="cx">Batal</button><button class="btn p">Simpan</button></div>`;
- $('#cx').onclick=()=>$('#dlg').close();
- if(k==='p'){const u=()=>{const n=+$('#f_nilai').value||0,m=+$('#f_modal').value||0,c=calc({nilai:n,modal:m});$('#pv').innerHTML=`<div><span>Potongan pajak 20,5%</span><b>${rp(c.pajak)}</b></div><div><span>Profit setelah pajak dan modal</span><b class="${c.profit<0?'neg':'pos'}">${rp(c.profit)}</b></div>`};$('#f').oninput=u;u();}
- $('#dlg').showModal();}
-$('#f').onsubmit=async e=>{e.preventDefault();const {k,id}=cur,v={};
- FORMS[k].f.forEach(([n,,t])=>{const x=$('#f_'+n).value;v[n]=t==='number'?+x:x.trim()});
- const {error}=await (id?sb.from(T[k]).update(v).eq('id',id):sb.from(T[k]).insert(v));
- if(error)return fail(error);
- $('#dlg').close();if(k==='p')tab=v.tipe;load();};
-document.addEventListener('click',e=>{
- const t=e.target.closest('[data-tab],[data-v],[data-a]');if(!t)return;const D=t.dataset;
- if(D.v){view=D.v;render();return}
- if(D.tab){tab=D.tab;render();return}
- if(D.a==='add')return openForm(D.k);
- if(D.a==='edit')return openForm(D.k,D.id);
- if(D.a==='tgl'){const p=S.p.find(x=>x.id===D.id);sb.from('projects').update({status:p.status==='Selesai'?'On Going':'Selesai'}).eq('id',D.id).then(({error})=>error?fail(error):load());return}
- if(D.a==='del'){
-  if(t.dataset.arm){sb.from(T[D.k]).delete().eq('id',D.id).then(({error})=>error?fail(error):load());return}
-  t.dataset.arm=1;t.textContent='Yakin hapus?';setTimeout(()=>{delete t.dataset.arm;t.textContent='Hapus'},3000);}
+  const rugi = all.filter(x => calc(x).profit < 0);
+  if (rugi.length) o.push(`${rugi.length} project terdeteksi berprofit negatif (${esc(rugi.map(x => x.nama).join(', '))}). Segera evaluasi modal HPP.`);
+
+  if (!on.length) o.push('Tidak ada project aktif saat ini. Segera ikuti pipeline lelang baru.');
+  else {
+    const von = sum(on, x => x.nilai), big = on.reduce((a, b) => a.nilai > b.nilai ? a : b);
+    if (on.length > 1 && big.nilai / von > 0.6) o.push(`Project "${esc(big.nama)}" mendominasi ${Math.round(big.nilai / von * 100)}% dari total modal berjalan. Lakukan monitoring ketat jadwal serah terima.`);
+    const need = sum(on, x => x.modal), dana = sum(S.i, x => x.modal);
+    if (need > dana && S.i.length) o.push(`Kebutuhan modal aktif (${rp(need)}) melampaui himpunan dana investor (${rp(dana)}).`);
+  }
+  if (sum(S.i, x => x.share) > 100) o.push('Peringatan: Alokasi total persentase bagi hasil investor melebihi kuota 100%.');
+  return o;
+}
+
+function rDash() {
+  const on = S.p.filter(x => x.status !== 'Selesai'), done = S.p.filter(x => x.status === 'Selesai');
+  const von = sum(on, x => x.nilai), g = sum(on.filter(x => x.tipe === 'Pemerintah'), x => x.nilai), b = von - g;
+  const gw = von ? (g / von) * 100 : 0, pr = sum(done, x => calc(x).profit);
+
+  $('#v-dash').innerHTML = `
+  <div class="page-header">
+    <div class="page-title-box">
+      <h1>Dashboard Pengadaan</h1>
+      <p>Ikhtisar performa proyek, arus modal, dan analisis margin keuntungan PT</p>
+    </div>
+    <div>
+      <button class="btn btn-primary" data-a="add" data-k="p">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        Tambah Proyek Baru
+      </button>
+    </div>
+  </div>
+
+  <div class="hero-dashboard">
+    <div class="card card-summary">
+      <div class="card-summary-top">
+        <span class="lbl-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+          Nilai Proyek Sedang Berjalan
+        </span>
+        <span class="badge-live">Live Active</span>
+      </div>
+      <div>
+        <div class="val-large">${rp(von)}</div>
+        <div class="progress-track" title="Komposisi Pemerintah vs B2B">
+          <div class="progress-fill gov" style="width: ${gw}%;"></div>
+          <div class="progress-fill b2b" style="width: ${von ? 100 - gw : 0}%;"></div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-item"><span class="legend-dot gov"></span> Pemerintah <span class="legend-val">${rp(g)} (${Math.round(gw)}%)</span></div>
+          <div class="legend-item"><span class="legend-dot b2b"></span> B2B Swasta <span class="legend-val">${rp(b)} (${Math.round(von ? 100 - gw : 0)}%)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-ai">
+      <div class="card-ai-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        Executive AI Intelligence
+      </div>
+      <ul class="ai-list">
+        ${saran().map(s => `<li><span class="ai-icon-bullet">&#9670;</span><span>${s}</span></li>`).join('')}
+      </ul>
+    </div>
+  </div>
+
+  <div class="kpis-grid">
+    <div class="card kpi-card">
+      <div>
+        <div class="kpi-title">Proyek On-Going</div>
+        <div class="kpi-val">${on.length} <span style="font-size:14px;font-weight:500;color:var(--ink-muted)">Kontrak</span></div>
+      </div>
+      <div class="kpi-icon-box blue">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      </div>
+    </div>
+
+    <div class="card kpi-card">
+      <div>
+        <div class="kpi-title">Proyek Berhasil Selesai</div>
+        <div class="kpi-val">${done.length} <span style="font-size:14px;font-weight:500;color:var(--ink-muted)">Kontrak</span></div>
+      </div>
+      <div class="kpi-icon-box amber">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+      </div>
+    </div>
+
+    <div class="card kpi-card">
+      <div>
+        <div class="kpi-title">Akumulasi Laba Bersih (Realisasi)</div>
+        <div class="kpi-val ${pr < 0 ? 'neg' : 'pos'}">${rp(pr)}</div>
+      </div>
+      <div class="kpi-icon-box green">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-subtitle-bar">
+    <div class="section-title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+      Daftar Pengadaan Sedang Berjalan
+    </div>
+  </div>
+  ${tbl(on, false)}
+  `;
+}
+
+function tbl(list, act) {
+  if (!list.length) {
+    return `
+    <div class="table-container">
+      <div class="empty-state">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+        <p style="font-weight: 600; font-size: 15px;">Belum ada data proyek pada kategori ini</p>
+        <p style="font-size: 13px; margin-top: 4px;">Tambahkan item pengadaan pertama Anda untuk memulai kalkulasi otomatis.</p>
+      </div>
+    </div>`;
+  }
+
+  return `
+  <div class="table-container">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Deskripsi Barang / Tender</th>
+            <th>Sektor</th>
+            <th class="r">Qty</th>
+            <th class="r">Nilai Kontrak</th>
+            <th class="r">Modal (HPP)</th>
+            <th class="r">Estimasi Pajak (20,5%)</th>
+            <th class="r">Net Profit</th>
+            ${act ? '<th style="text-align:center;">Aksi</th>' : ''}
+          </tr>
+        </thead>
+        <tbody>
+          ${list.map(p => {
+            const c = calc(p);
+            return `
+            <tr>
+              <td>
+                <div class="td-name">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.4"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                  ${esc(p.nama)}
+                </div>
+              </td>
+              <td>
+                <span class="pill ${p.tipe === 'Pemerintah' ? 'pill-gov' : 'pill-b2b'}">${p.tipe}</span>
+              </td>
+              <td class="r" style="font-weight:600;">${p.qty}</td>
+              <td class="r" style="font-weight:700;">${rp(p.nilai)}</td>
+              <td class="r" style="color:var(--ink-secondary);">${rp(p.modal)}</td>
+              <td class="r" style="color:var(--ink-muted);">${rp(c.pajak)}</td>
+              <td class="r ${c.profit < 0 ? 'neg' : 'pos'}">${rp(c.profit)}</td>
+              ${act ? `
+              <td class="r" style="white-space: nowrap;">
+                <button class="btn btn-sm" data-a="tgl" data-id="${p.id}" title="Ubah status pengerjaan">
+                  ${p.status === 'Selesai' ? 'Kembalikan Aktif' : '✓ Tandai Selesai'}
+                </button>
+                <button class="btn btn-sm" data-a="edit" data-k="p" data-id="${p.id}">Edit</button>
+                <button class="btn btn-sm btn-danger-ghost" data-a="del" data-k="p" data-id="${p.id}">Hapus</button>
+              </td>` : ''}
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function rPgd() {
+  const l = S.p.filter(x => x.tipe === tab);
+  const onGoing = l.filter(x => x.status !== 'Selesai');
+  const selesai = l.filter(x => x.status === 'Selesai');
+
+  $('#v-pgd').innerHTML = `
+  <div class="page-header">
+    <div class="page-title-box">
+      <h1>Manajemen Pengadaan</h1>
+      <p>Kelola dan pantau transaksi tender pemerintah (LPSE) serta kontrak pengadaan B2B swasta</p>
+    </div>
+    <button class="btn btn-primary" data-a="add" data-k="p">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      + Tambah Pengadaan
+    </button>
+  </div>
+
+  <div class="tabs-segmented">
+    <button data-tab="Pemerintah" class="${tab === 'Pemerintah' ? 'on' : ''}">Pengadaan Pemerintah (LPSE)</button>
+    <button data-tab="B2B" class="${tab === 'B2B' ? 'on' : ''}">Pengadaan Korporasi (B2B)</button>
+  </div>
+
+  <div class="section-subtitle-bar" style="margin-top: 18px;">
+    <div class="section-title">
+      <span class="badge-live" style="margin-right: 4px;">Aktif</span>
+      Proyek Berjalan (${onGoing.length})
+    </div>
+  </div>
+  ${tbl(onGoing, true)}
+
+  <div class="section-subtitle-bar" style="margin-top: 36px;">
+    <div class="section-title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--success)"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+      Arsip Proyek Selesai (${selesai.length})
+    </div>
+  </div>
+  ${tbl(selesai, true)}
+  `;
+}
+
+function rInv() {
+  const pr = sum(S.p.filter(x => x.status === 'Selesai'), x => calc(x).profit);
+  $('#v-inv').innerHTML = `
+  <div class="page-header">
+    <div class="page-title-box">
+      <h1>Mitra Pemodal & Investor</h1>
+      <p>Perhitungan deviden otomatis: Hasil persentase kepemilikan modal &times; total profit bersih proyek selesai <strong>(${rp(pr)})</strong></p>
+    </div>
+    <button class="btn btn-primary" data-a="add" data-k="i">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      + Tambah Investor
+    </button>
+  </div>
+
+  ${S.i.length ? `
+  <div class="table-container">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Investor</th>
+            <th class="r">Modal Disetor</th>
+            <th class="r">Persentase Bagi Hasil</th>
+            <th class="r">Total Keuntungan Diterima</th>
+            <th style="text-align:center;">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${S.i.map(i => `
+          <tr>
+            <td>
+              <div class="td-name">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--brand-primary)"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                ${esc(i.nama)}
+              </div>
+            </td>
+            <td class="r" style="font-weight:700;">${rp(i.modal)}</td>
+            <td class="r"><span class="pill pill-gov">${i.share}%</span></td>
+            <td class="r pos" style="font-size:15px;">${rp(pr * i.share / 100)}</td>
+            <td class="r">
+              <button class="btn btn-sm" data-a="edit" data-k="i" data-id="${i.id}">Edit</button>
+              <button class="btn btn-sm btn-danger-ghost" data-a="del" data-k="i" data-id="${i.id}">Hapus</button>
+            </td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  </div>` : `
+  <div class="table-container">
+    <div class="empty-state">
+      <p style="font-weight: 600;">Belum ada data investor tersimpan.</p>
+    </div>
+  </div>`}
+  `;
+}
+
+function rSup() {
+  $('#v-sup').innerHTML = `
+  <div class="page-header">
+    <div class="page-title-box">
+      <h1>Direktori Supplier & Vendor</h1>
+      <p>Basis data rekanan terpercaya untuk kebutuhan pengadaan barang dan negosiasi HPP</p>
+    </div>
+    <button class="btn btn-primary" data-a="add" data-k="s">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      + Tambah Supplier
+    </button>
+  </div>
+
+  ${S.s.length ? `
+  <div class="table-container">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Vendor / Supplier</th>
+            <th>Kategori / Bidang Usaha</th>
+            <th>Kontak PIC / Layanan</th>
+            <th style="text-align:center;">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${S.s.map(s => `
+          <tr>
+            <td>
+              <div class="td-name">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-gold)"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                ${esc(s.nama)}
+              </div>
+            </td>
+            <td><span class="pill pill-ongoing">${esc(s.bidang)}</span></td>
+            <td style="font-family:var(--font-mono);font-size:13px;color:var(--ink-secondary);">${esc(s.kontak)}</td>
+            <td class="r">
+              <button class="btn btn-sm" data-a="edit" data-k="s" data-id="${s.id}">Edit</button>
+              <button class="btn btn-sm btn-danger-ghost" data-a="del" data-k="s" data-id="${s.id}">Hapus</button>
+            </td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  </div>` : `
+  <div class="table-container">
+    <div class="empty-state">
+      <p style="font-weight:600;">Belum ada supplier tersimpan.</p>
+    </div>
+  </div>`}
+  `;
+}
+
+function render() {
+  $('#nav').innerHTML = VIEWS.map(([k, t, icon]) => `
+    <button data-v="${k}" class="${k === view ? 'on' : ''}">
+      ${icon}
+      <span>${t}</span>
+    </button>
+  `).join('');
+
+  document.querySelectorAll('.sec').forEach(s => s.classList.toggle('on', s.id === 'v-' + view));
+  ({ dash: rDash, pgd: rPgd, inv: rInv, sup: rSup })[view]();
+}
+
+const FORMS = {
+  p: {
+    t: 'Pengadaan',
+    f: [
+      ['tipe', 'Kategori Proyek', 'select', ['Pemerintah', 'B2B']],
+      ['nama', 'Deskripsi / Nama Barang Tender', 'text'],
+      ['qty', 'Kuantitas Unit (Qty)', 'number'],
+      ['nilai', 'Nilai Kontrak / Harga Jual Penawaran (Rp)', 'number'],
+      ['modal', 'Estimasi Modal Pokok / HPP (Rp)', 'number'],
+      ['status', 'Status Pengerjaan', 'select', ['On Going', 'Selesai']]
+    ]
+  },
+  i: {
+    t: 'Investor',
+    f: [
+      ['nama', 'Nama Lengkap Pemodal', 'text'],
+      ['modal', 'Modal Disetor (Rp)', 'number'],
+      ['share', 'Bagi Hasil Deviden (%)', 'number']
+    ]
+  },
+  s: {
+    t: 'Supplier',
+    f: [
+      ['nama', 'Nama Badan Usaha / Rekanan', 'text'],
+      ['bidang', 'Spesialisasi Bidang Usaha', 'text'],
+      ['kontak', 'Kontak Telepon / Email PIC', 'text']
+    ]
+  }
+};
+
+let cur = null;
+function openForm(k, id) {
+  const F = FORMS[k], d = id ? S[k].find(x => sameId(x.id, id)) : (k === 'p' ? { tipe: tab, status: 'On Going' } : {});
+  cur = { k, id };
+
+  $('#f').innerHTML = `
+    <div class="form-title">${id ? 'Perbarui Data' : 'Tambah'} ${F.t}</div>
+    ` + F.f.map(([n, l, t, o]) => `
+      <div class="form-group">
+        <label for="f_${n}">${l}</label>
+        ${t === 'select' ? `
+          <select id="f_${n}" name="${n}">
+            ${o.map(v => `<option ${d[n] === v ? 'selected' : ''}>${v}</option>`).join('')}
+          </select>` : `
+          <input id="f_${n}" name="${n}" type="${t}" ${t === 'number' ? 'min="0" step="any"' : ''} value="${d[n] ?? ''}" required>`}
+      </div>
+    `).join('') + `
+    ${k === 'p' ? '<div class="preview-calc-box" id="pv"></div>' : ''}
+    <div class="form-actions">
+      <button type="button" class="btn" id="cx">Batal</button>
+      <button class="btn btn-primary">Simpan Informasi</button>
+    </div>
+  `;
+
+  $('#cx').onclick = () => $('#dlg').close();
+
+  if (k === 'p') {
+    const u = () => {
+      const n = +$('#f_nilai').value || 0;
+      const m = +$('#f_modal').value || 0;
+      const c = calc({ nilai: n, modal: m });
+      $('#pv').innerHTML = `
+        <div class="preview-row">
+          <span>Potongan Pajak (PPN/PPh 20,5%):</span>
+          <strong>${rp(c.pajak)}</strong>
+        </div>
+        <div class="preview-row">
+          <span>Estimasi Laba Bersih Bersih:</span>
+          <strong class="${c.profit < 0 ? 'neg' : 'pos'}">${rp(c.profit)}</strong>
+        </div>
+      `;
+    };
+    $('#f').oninput = u;
+    u();
+  }
+  $('#dlg').showModal();
+}
+
+$('#f').onsubmit = async e => {
+  e.preventDefault();
+  const { k, id } = cur, v = {};
+  FORMS[k].f.forEach(([n, , t]) => {
+    const x = $('#f_' + n).value;
+    v[n] = t === 'number' ? +x : x.trim();
+  });
+  const { error } = await (id ? sb.from(T[k]).update(v).eq('id', id) : sb.from(T[k]).insert(v));
+  if (error) return fail(error);
+  $('#dlg').close();
+  if (k === 'p') tab = v.tipe;
+  load();
+};
+
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-tab],[data-v],[data-a]');
+  if (!t) return;
+  const D = t.dataset;
+  if (D.v) { view = D.v; render(); return; }
+  if (D.tab) { tab = D.tab; render(); return; }
+  if (D.a === 'add') return openForm(D.k);
+  if (D.a === 'edit') return openForm(D.k, D.id);
+  if (D.a === 'tgl') {
+    const p = S.p.find(x => sameId(x.id, D.id));
+    sb.from('projects').update({ status: p.status === 'Selesai' ? 'On Going' : 'Selesai' }).eq('id', D.id)
+      .then(({ error }) => error ? fail(error) : load());
+    return;
+  }
+  if (D.a === 'del') {
+    if (t.dataset.arm) {
+      sb.from(T[D.k]).delete().eq('id', D.id).then(({ error }) => error ? fail(error) : load());
+      return;
+    }
+    t.dataset.arm = 1;
+    t.textContent = 'Yakin hapus?';
+    setTimeout(() => {
+      delete t.dataset.arm;
+      t.textContent = 'Hapus';
+    }, 3000);
+  }
 });
-const SUPABASE_URL='https://bqstywjflynxxlpkmeqv.supabase.co',SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJxc3R5d2pmbHlueHhscGttZXF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1ODI4NzIsImV4cCI6MjEwODE1ODg3Mn0.gdCArnuyvVY9EPAb6t7KMSAbwdTQxhZRuYe53MfnVP0';
-const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-async function load(){for(const k of ['p','i','s']){const {data,error}=await sb.from(T[k]).select('*').order('created_at');
- if(error)return fail(error);S[k]=data.map(r=>{for(const f of ['qty','nilai','modal','share'])if(f in r)r[f]=+r[f];return r})}render();}
-function enter(em){$('#login').style.display='none';$('#who').textContent=em;load();}
-sb.auth.getSession().then(({data})=>{if(data.session)enter(data.session.user.email)});
-$('#lf').onsubmit=async e=>{e.preventDefault();$('#err').textContent='Memeriksa...';
- const {data,error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});
- if(error){$('#err').textContent='Email atau password salah.';return}
- $('#pw').value='';$('#err').textContent='';enter(data.user.email)};
-$('#out').onclick=async()=>{await sb.auth.signOut();location.reload()};
+
+/* Profil tampilan per email (login diverifikasi oleh Supabase Auth) */
+const USERS_DB = {
+  'esabriylian@gmail.com': {
+    name: 'E. Sabriylian',
+    fullName: 'Ibu Elsa Sabriylian',
+    role: 'Direktur Keuangan & Otorisasi',
+    initial: 'E'
+  },
+  'hanifhawari@gmail.com': {
+    name: 'Hanif Hawari',
+    fullName: 'Bapak Hanif Hawari',
+    role: 'Direktur Utama • Otorisasi Eksekutif',
+    initial: 'H'
+  }
+};
+
+function enter(em, animate = false) {
+  em = (em || '').toLowerCase();
+  const user = USERS_DB[em] || {
+    name: em.split('@')[0],
+    fullName: em.split('@')[0],
+    role: 'Pejabat Otorisasi MSM',
+    initial: em.charAt(0).toUpperCase()
+  };
+
+  $('#who').textContent = user.name;
+  $('#user-role-label').textContent = user.role;
+  $('#avatar-letter').textContent = user.initial;
+
+  if (!animate) {
+    $('#login').style.display = 'none';
+    load();
+    return;
+  }
+  load();
+
+  // Exclusive Luxury Welcome Sequence
+  const welcomeOverlay = $('#luxury-welcome');
+  const welcomeName = $('#lux-welcome-name');
+  const roleText = $('#lux-role-text');
+  const progressBeam = $('#lux-progress-beam');
+  const statusLabel = $('#lux-status-label');
+
+  welcomeName.textContent = user.name;
+  roleText.textContent = `${user.role} • PT. Mulya Sarana Mandiri`;
+  progressBeam.style.width = '0%';
+  statusLabel.textContent = 'Mengautentikasi hak akses eksekutif & kuota kontrak...';
+
+  welcomeOverlay.classList.remove('fade-out');
+  welcomeOverlay.classList.add('active');
+  $('#login').style.opacity = '0';
+
+  // Smooth Step Progress Animation
+  setTimeout(() => {
+    progressBeam.style.width = '35%';
+    statusLabel.textContent = `Memverifikasi kredensial otoritas ${user.name}...`;
+  }, 400);
+
+  setTimeout(() => {
+    progressBeam.style.width = '75%';
+    statusLabel.textContent = 'Memuat analitik laba & portfolio pengadaan...';
+  }, 1200);
+
+  setTimeout(() => {
+    progressBeam.style.width = '100%';
+    statusLabel.textContent = 'Sesi terotorisasi. Membuka Executive Dashboard...';
+  }, 2000);
+
+  setTimeout(() => {
+    render();
+    welcomeOverlay.classList.add('fade-out');
+    setTimeout(() => {
+      welcomeOverlay.classList.remove('active', 'fade-out');
+      $('#login').style.display = 'none';
+    }, 700);
+  }, 2700);
+}
+
+sb.auth.getSession().then(({ data }) => {
+  if (data.session) enter(data.session.user.email, false);
+});
+
+$('#lf').onsubmit = async e => {
+  e.preventDefault();
+  $('#err').textContent = 'Memeriksa...';
+  try { localStorage.setItem('msm-rm', $('#rm').checked ? '1' : '0'); } catch(x) {}
+  const { data, error } = await sb.auth.signInWithPassword({
+    email: $('#em').value.trim(),
+    password: $('#pw').value
+  });
+  if (error) {
+    $('#err').textContent = /invalid login/i.test(error.message) ? 'Email atau password salah' : 'Gagal masuk: ' + error.message;
+    return;
+  }
+  $('#pw').value = '';
+  $('#err').textContent = '';
+  enter(data.user.email, true);
+};
+
+$('#out').onclick = async () => {
+  await sb.auth.signOut();
+  try { localStorage.removeItem('msm-rm'); } catch(x) {}
+  location.reload();
+};
 </script>
-</body>
-</html>
+</body></html>
