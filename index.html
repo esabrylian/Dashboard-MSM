@@ -262,6 +262,11 @@ nav button.on svg {
   color: #fb7185;
 }
 
+/* Mobile Quick Bar for User Profile & Logout (hidden on desktop) */
+.mobile-header-bar {
+  display: none;
+}
+
 /* Main Area */
 main {
   padding: 32px 40px;
@@ -663,6 +668,30 @@ td {
   background: var(--danger-light);
   border-color: transparent;
   color: var(--danger);
+}
+
+/* Mobile Logout Dedicated Button Style */
+.btn-mobile-logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #f87171;
+  background: rgba(225, 29, 72, 0.14);
+  border: 1px solid rgba(225, 29, 72, 0.35);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  touch-action: manipulation;
+  flex-shrink: 0;
+}
+.btn-mobile-logout:hover, .btn-mobile-logout:active {
+  background: rgba(225, 29, 72, 0.25);
+  color: #fecdd3;
+  border-color: #fb7185;
 }
 
 /* Tab Navigation */
@@ -1217,8 +1246,8 @@ input:focus, select:focus {
   flex-shrink: 0;
 }
 
-/* Responsive Overrides for Mobile (iPhone & Android) */
-@media (max-width: 960px) {
+/* Responsive Overrides for Mobile (iPhone & Android <= 820px) */
+@media (max-width: 820px) {
   body {
     grid-template-columns: 1fr;
     display: flex;
@@ -1228,46 +1257,100 @@ input:focus, select:focus {
     position: sticky;
     top: 0;
     height: auto;
-    padding: 12px 16px;
-    padding-top: max(12px, env(safe-area-inset-top));
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
+    padding: 10px 14px;
+    padding-top: max(10px, env(safe-area-inset-top));
+    padding-left: max(14px, env(safe-area-inset-left));
+    padding-right: max(14px, env(safe-area-inset-right));
     z-index: 30;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.28);
   }
   .brand-wrapper {
     padding-bottom: 8px;
-    border-bottom: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     justify-content: space-between;
+    width: 100%;
   }
+  
+  /* Mobile Header Top Bar with Profile and Persistent Logout */
+  .mobile-header-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .mobile-user-preview {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .mobile-user-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .mobile-user-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #f1f5f9;
+    max-width: 110px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .nav-group-title { display: none; }
+  
+  /* Navigation Bar along with mobile items */
+  .mobile-nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-top: 6px;
+    width: 100%;
+  }
+
   nav {
     flex-direction: row;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    gap: 8px;
-    padding: 4px 0;
+    gap: 6px;
+    padding: 2px 0;
     scrollbar-width: none;
+    flex: 1;
   }
   nav::-webkit-scrollbar { display: none; }
   nav button {
     white-space: nowrap;
-    padding: 8px 14px;
-    min-height: 42px;
-    font-size: 13px;
+    padding: 7px 12px;
+    min-height: 38px;
+    font-size: 12.5px;
   }
   nav button.on {
     border-left: none;
     border-bottom: 2px solid #38bdf8;
     border-radius: var(--radius-sm);
-    padding-left: 14px;
+    padding-left: 12px;
   }
+  
+  /* User footer in aside: keep visible and responsive */
   .user-footer {
     display: none;
   }
+  
   main {
     padding: 16px;
-    padding-top: 16px;
+    padding-top: 14px;
     padding-bottom: max(24px, env(safe-area-inset-bottom));
     padding-left: max(16px, env(safe-area-inset-left));
     padding-right: max(16px, env(safe-area-inset-right));
@@ -1319,6 +1402,9 @@ input:focus, select:focus {
     font-size: 10.5px;
     padding: 5px 12px;
   }
+  .mobile-user-name {
+    max-width: 80px;
+  }
 }
 </style>
 </head>
@@ -1326,17 +1412,17 @@ input:focus, select:focus {
 <!-- Login Modal -->
 <div id="login">
 <div class="login-panel">
-<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;"><img alt="PT. Mulya Sarana Mandiri" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD11_5oyqxRqs0AHY4suixPl6DkzFs4fKor9E8-FK6QJ54FRMTFFKiQMbwnchqKEkZgh7K9RQRA601TrLDhqtqKaIztNL4N1savZ7Y43Rid5KDEwBKVySONJG-50A35P30j3EkRZvYIZo9caLII2yhbBXsRuM2zsLh6TwkBQ9FDO7rV1UN6wLPZdyEoZTqX7O-xrhF767SkSt8NsTIz5NfV8_6_xLzbM0mD8wfKAxbCOPDQb4iyiDBp" style="max-height: 64px; max-width: 220px; object-fit: contain; filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 12px);"/></div>
+<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;"><img alt="PT. Mulya Sarana Mandiri" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjONlbt30a401MjRWsnU7z8qdN5pVt4n5quxHxBqdTSNu9p6Z2DGgv8WQStT8g9HCC0eCQ5UeoAsk0Y_q3129hGw5h14zp34bbbJA7625c-cm4W7KaOr1LWVsbUCVBp0gt_sIj1bnBjwsqyMtRR0o-sdoSQAKfppFf_zA6G8A_ck8zlcqswr76yFbFTgLuF9i0uEIECSP4HIDwR_gWkGZYmB4xWeTlk_7M8ZThzzrDTSvfq4Ideu5b" style="max-height: 64px; max-width: 220px; object-fit: contain; filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 12px);"/></div>
 <h1>Masuk Sistem</h1>
 <p class="company-subtitle">PT. MULYA SARANA MANDIRI • Portal Pengadaan</p>
-<form class="login-form-inner" id="lf">
+<form autocomplete="off" class="login-form-inner" id="lf">
 <div class="form-group">
 <label for="em">Alamat Email</label>
-<input autocomplete="username" id="em" placeholder="nama@mulyasaranamandiri.co.id" required="" type="email" value="hanifhawari@gmail.com"/>
+<input autocomplete="off" id="em" placeholder="nama@email.com" required="" type="email" value=""/>
 </div>
 <div class="form-group">
 <label for="pw">Kata Sandi</label>
-<input autocomplete="current-password" id="pw" placeholder="••••••••" required="" type="password" value="hans1212"/>
+<input autocomplete="new-password" id="pw" placeholder="Masukkan kata sandi" required="" type="password" value=""/>
 </div>
 <label class="remember-row">
 <input checked="" id="rm" type="checkbox"/> <span>Ingat saya di perangkat ini</span>
@@ -1368,7 +1454,7 @@ input:focus, select:focus {
 <div class="lux-aura-ring"></div>
 <div class="lux-aura-border"></div>
 <div class="lux-emblem-inner">
-<img alt="PT. Mulya Sarana Mandiri" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD11_5oyqxRqs0AHY4suixPl6DkzFs4fKor9E8-FK6QJ54FRMTFFKiQMbwnchqKEkZgh7K9RQRA601TrLDhqtqKaIztNL4N1savZ7Y43Rid5KDEwBKVySONJG-50A35P30j3EkRZvYIZo9caLII2yhbBXsRuM2zsLh6TwkBQ9FDO7rV1UN6wLPZdyEoZTqX7O-xrhF767SkSt8NsTIz5NfV8_6_xLzbM0mD8wfKAxbCOPDQb4iyiDBp"/>
+<img alt="PT. Mulya Sarana Mandiri" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjONlbt30a401MjRWsnU7z8qdN5pVt4n5quxHxBqdTSNu9p6Z2DGgv8WQStT8g9HCC0eCQ5UeoAsk0Y_q3129hGw5h14zp34bbbJA7625c-cm4W7KaOr1LWVsbUCVBp0gt_sIj1bnBjwsqyMtRR0o-sdoSQAKfppFf_zA6G8A_ck8zlcqswr76yFbFTgLuF9i0uEIECSP4HIDwR_gWkGZYmB4xWeTlk_7M8ZThzzrDTSvfq4Ideu5b"/>
 </div>
 </div>
 <!-- Exclusive Greeting -->
@@ -1403,14 +1489,29 @@ input:focus, select:focus {
 <aside>
 <div>
 <div class="brand-wrapper">
-<div class="brand-icon" style="background: transparent; box-shadow: none; width: auto; height: 38px; display: flex; align-items: center;"><img alt="PT. Mulya Sarana Mandiri" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD11_5oyqxRqs0AHY4suixPl6DkzFs4fKor9E8-FK6QJ54FRMTFFKiQMbwnchqKEkZgh7K9RQRA601TrLDhqtqKaIztNL4N1savZ7Y43Rid5KDEwBKVySONJG-50A35P30j3EkRZvYIZo9caLII2yhbBXsRuM2zsLh6TwkBQ9FDO7rV1UN6wLPZdyEoZTqX7O-xrhF767SkSt8NsTIz5NfV8_6_xLzbM0mD8wfKAxbCOPDQb4iyiDBp" style="max-height: 38px; max-width: 48px; object-fit: contain;"/></div>
+<div style="display: flex; align-items: center; gap: 10px;">
+<div class="brand-icon" style="background: transparent; box-shadow: none; width: auto; height: 38px; display: flex; align-items: center;"><img alt="PT. Mulya Sarana Mandiri" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjONlbt30a401MjRWsnU7z8qdN5pVt4n5quxHxBqdTSNu9p6Z2DGgv8WQStT8g9HCC0eCQ5UeoAsk0Y_q3129hGw5h14zp34bbbJA7625c-cm4W7KaOr1LWVsbUCVBp0gt_sIj1bnBjwsqyMtRR0o-sdoSQAKfppFf_zA6G8A_ck8zlcqswr76yFbFTgLuF9i0uEIECSP4HIDwR_gWkGZYmB4xWeTlk_7M8ZThzzrDTSvfq4Ideu5b" style="max-height: 38px; max-width: 48px; object-fit: contain;"/></div>
 <div class="brand-text">
 <h2>PT. MULYA SARANA MANDIRI</h2>
 <p>Procurement ERP v2.4</p>
 </div>
 </div>
+<!-- Mobile Top Logout Bar (Visible <= 820px) -->
+<div class="mobile-header-bar">
+<div class="mobile-user-preview">
+<div class="mobile-user-avatar" id="mob-avatar-letter">H</div>
+<span class="mobile-user-name" id="mob-user-name">User</span>
+</div>
+<button class="btn-mobile-logout" id="out-mobile" title="Keluar dari akun">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="14"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" x2="9" y1="12" y2="12"></line></svg>
+<span>Keluar</span>
+</button>
+</div>
+</div>
 <div class="nav-group-title">Menu Utama</div>
+<div class="mobile-nav-container">
 <nav id="nav"></nav>
+</div>
 </div>
 <div class="user-footer">
 <div class="user-chip">
@@ -1958,14 +2059,14 @@ document.addEventListener('click', e => {
 /* Profil tampilan per email (login diverifikasi oleh Supabase Auth) */
 const USERS_DB = {
   'esabriylian@gmail.com': {
-    name: 'E. Sabriylian',
-    fullName: 'Ibu Elsa Sabriylian',
+    name: 'Esabryan',
+    fullName: 'Esa bryantama',
     role: 'Direktur Keuangan & Otorisasi',
-    initial: 'E'
+    initial: 'Esoy'
   },
   'hanifhawari@gmail.com': {
-    name: 'Hanif Hawari',
-    fullName: 'Bapak Hanif Hawari',
+    name: 'Hanif Panda',
+    fullName: 'Hanif Hawari',
     role: 'Direktur Utama • Otorisasi Eksekutif',
     initial: 'H'
   }
@@ -1983,6 +2084,10 @@ function enter(em, animate = false) {
   $('#who').textContent = user.name;
   $('#user-role-label').textContent = user.role;
   $('#avatar-letter').textContent = user.initial;
+
+  // Update mobile user badge
+  if ($('#mob-user-name')) $('#mob-user-name').textContent = user.name;
+  if ($('#mob-avatar-letter')) $('#mob-avatar-letter').textContent = user.initial;
 
   if (!animate) {
     $('#login').style.display = 'none';
@@ -2034,7 +2139,13 @@ function enter(em, animate = false) {
 }
 
 sb.auth.getSession().then(({ data }) => {
-  if (data.session) enter(data.session.user.email, false);
+  if (data.session) {
+    enter(data.session.user.email, false);
+  } else {
+    // Ensure login fields remain empty when not logged in
+    if ($('#em')) $('#em').value = '';
+    if ($('#pw')) $('#pw').value = '';
+  }
 });
 
 $('#lf').onsubmit = async e => {
@@ -2054,10 +2165,13 @@ $('#lf').onsubmit = async e => {
   enter(data.user.email, true);
 };
 
-$('#out').onclick = async () => {
+const handleLogout = async () => {
   await sb.auth.signOut();
   try { localStorage.removeItem('msm-rm'); } catch(x) {}
   location.reload();
 };
+
+if ($('#out')) $('#out').onclick = handleLogout;
+if ($('#out-mobile')) $('#out-mobile').onclick = handleLogout;
 </script>
 </body></html>
